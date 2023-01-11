@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('secretaires', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idUser')->unsigned();
+            $table->foreign('idUser')->references('id')->on('users');
             $table->string('prenom');
             $table->string('nom');
             $table->string('telephone');
