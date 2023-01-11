@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -28,6 +29,20 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected function redirectTo(){
+        if(Auth()->user()->role=='admin'){
+            return route('admin.dashboard');
+        }
+        elseif(Auth()->user()->role=='medecin') {
+            return route('medecin.dashboard');
+        }
+        elseif(Auth()->user()->role=='secretaire') {
+            return route('secretaire.dashboard');
+        }
+        else{
+            return redirect()->route('login')->with('error','email and password are wrong');
+        }
+    }
     /**
      * Create a new controller instance.
      *
@@ -36,5 +51,26 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function login(Request $request){
+        $input = $request->all();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(Auth()->attempt(array('email'=>$input['email'],'password'=>$input['password']))){
+            if (Auth()->user()->role=='admin') {
+                return redirect()->route('admin.dashboard');
+            } else if (Auth()->user()->role=='medecin') {
+                return redirect()->route('medecin.dashboard');
+            }
+            else if (Auth()->user()->role=='secretaire') {
+                return redirect()->route('secretaire.dashboard');
+            }
+            else{
+                return redirect()->route('login')->with('error','email and password are wrong');
+            }
+        }
     }
 }
