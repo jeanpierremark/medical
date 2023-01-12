@@ -28,6 +28,11 @@ Route::group(['prefix' => 'admin', 'middleware' =>['isAdmin','auth']], function 
 Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], function () {
     Route::get('dashboard', [MedecinController::class, 'index'])->name('medecin.dashboard');
 });
-Route::group(['prefix' => 'secretaire', 'middleware' =>['isSecretaire','auth']], function () {
-    Route::get('dashboard', [SecretaireController::class, 'index'])->name('secretaire.dashboard');
-});
+    route::get('/editer/{id}', [SecretaireController::class, 'edit'])->name('editer');
+    Route::group(['prefix' => 'secretaire', 'middleware' =>['isSecretaire','auth']], function () {
+                 Route::get('dashboard', [SecretaireController::class, 'index'])->name('secretaire.dashboard');
+                 Route::post('ajouterPatient',[SecretaireController::class,'ajoutPatient'])->name('patient');
+                 Route::get('ajouterPatient', [SecretaireController::class, 'ajouter'])->name('secretaire.ajouterPatient');
+                 Route::get('listerPatient', [SecretaireController::class, 'lister'])->name('secretaire.listerPatient');
+                 route::post('modifier', [SecretaireController::class, 'update'])->name('update');
+                 });
