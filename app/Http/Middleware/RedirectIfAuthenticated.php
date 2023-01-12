@@ -27,8 +27,8 @@ class RedirectIfAuthenticated
             //}
             if (Auth::guard($guard)->check() && Auth::user()->role == 'admin') {
                 return redirect()->route('admin.dashboard');
-            } else if (Auth::guard($guard)->check() && Auth::user()->role == 'user') {
-                return redirect()->route('user.dashboard');
+            } else if (Auth::guard($guard)->check() && Auth::user()->role == 'medecin') {
+                return redirect()->route('medecin.dashboard');
             }
         }
 

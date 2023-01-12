@@ -10,3 +10,4 @@ class MedecinController extends Controller
         return view('medecin.dashboard');
     }
 }
+    

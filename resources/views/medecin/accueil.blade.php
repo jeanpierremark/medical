@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Espace-Administrateur</title>
+  <title>Espace-Médecin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -60,7 +60,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            
+            <img src="../img/med2.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2" style="color:darkblue;"></span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -81,7 +81,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside  class="sidebar " style="background-color:grey" >
+  <aside  class="sidebar " style="background-image: url('../img/med2.jpg'); margin-top: 20px ;" >
    
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -165,4 +165,3 @@
 </body>
 
 </html>
-
