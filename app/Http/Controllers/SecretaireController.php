@@ -12,6 +12,28 @@ class SecretaireController extends Controller
         return view('secretaire.dashboard');
     }
 
+    public function agenda()
+    {
+        return view('secretaire.agenda');
+    }
+    public function getrendezVous()
+    {
+        return view('secretaire.ajouterRv');
+    }
+
+    public function getagenda()
+    {
+        return view('secretaire.calendrier');
+    }
+
+    public function orienter($id)
+    { 
+        $p = Patient::find($id);
+
+        $patients = Patient::all();
+        return view('secretaire.listerPatient', compact('patients'));
+    }
+
     public function ajouter()
     {
         return view('secretaire.ajouterPatient');
@@ -43,7 +65,6 @@ class SecretaireController extends Controller
     }
     public function ajoutPatient(Request $request)
     {
-
         $patient = new Patient();
         $patient->idAn = $request->idAn;
         $patient->prenom = $request->prenom;

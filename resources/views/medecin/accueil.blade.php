@@ -16,8 +16,8 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
-   <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+   <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,15 +61,20 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="../img/med2.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2" style="color:darkblue;"></span>
+            <span class="d-none d-md-block dropdown-toggle ps-2" style="color:darkblue;"> {{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Déconnexion</span>
-              </a>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Déconnexion') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
@@ -88,21 +93,21 @@
     
 
     <li class="nav-item">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="{{route('medecin.dashboard')}}">
                     <i class="fas  fa-home"></i>
                     Accueil
                 </a>
             </li>
             <hr class="sidebar- text-light">
             <li class="nav-item">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="{{route('medecin.agenda')}}">
                     <i class="fas  fa-calendar-alt "></i>
                     Agenda
                 </a>
             </li>
           <hr class="sidebar- text-light">
             <li class="nav-item">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="{{route('medecin.lister')}}">
                  <i class="fas fa-users"></i>Patients
                 </a>
             </li>

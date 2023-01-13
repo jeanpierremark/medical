@@ -1,91 +1,205 @@
 @extends('secretaire.dashboard')
 @section('content')
-<h1 style="color:darkblue;"> <i class="fas fa-user"></i> Formulaire de mofification des patients</h1>
-<div class="card col-xl-12 col-md-4 mb-4" style="border-top: 5px solid darkblue; ">
+<br><br>
+<div class="card col-xl-12 col-md-4 mb-4" style="border-top: 2px solid aqua; ">
+	<br>
+	<center> <caption ><span class="bi bi-pencil-square" style="font-size:25px"> &nbsp; Modifier Patient</span> </caption></center>
 	<br>
 	<table>
+	
 		@if(isset($confirm))
 			@if($confirm==1)
 
 				<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					<td>
-						<div style="margin-left: 50px;width: 183%; font-size: 20px;" class="alert alert-success ">Patient Ajouté avec succès!</div>
+						<div style="width: 183%; font-size: 20px;" class="alert alert-success ">Patient Ajouté avec succès!</div>
 					</td>
 				</tr>
 
 			@endif
 		@endif
 
+		<form method="POST" action="{{route('patient')}}"  style=" margin-top:200px">
+    @csrf
+    
+  
+    <div class="card-body">
+            <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Prénom</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class=" form-control" name="prenom" value="{{$patient->prenom}}" >
+                </div>
+            </div> <br>
+            </td>
+            </tr> 
+            <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Nom</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class="form-control" name="nom" value="{{$patient->nom}}">
+                </div>
+            </div><br>
+            </td>
+            </tr>
+			<tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Téléphone</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class=" form-control" name="telephone" value="{{$patient->telephone}}" >
+                </div>
+            </div> <br>
+            </td>
+            </tr> 
+            <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Adresse</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class="form-control" name="adresse" value="{{$patient->adresse}}">
+                </div>
+            </div><br>
+            </td>
+            </tr>
+			<tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Profession</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class=" form-control" name="profession" value="{{$patient->profession}}" >
+                </div>
+            </div> <br>
+            </td>
+            </tr> 
+            <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Niveau d'Etude</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class="form-control" name="niveau" value="{{$patient->niveauEtude}}">
+                </div>
+            </div><br>
+            </td>
+            </tr>
+			<tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Age</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="number" class=" form-control" name="age" value="{{$patient->age}}" >
+                </div>
+            </div> <br>
+            </td>
+            </tr> 
+           
+           
+            <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td>
+						<div class=" form-group">
+							<input class="bi bi-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="modifier" value="Modifier">
 
-		<form method="POST" action="{{ route('update')}}">
-			@csrf
-			<tbody>
-				<tr>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="prenom"> <strong> Prenom</strong></label>
-							<input placeholder="Prenom" value="{{$patient->prenom}}" style="width:400px;margin-left: 50px; " class="form-control" type="text" name="prenom">
 						</div>
 					</td>
-					<td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
+                    <td>
 						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="nom"> <strong> Nom</strong></label>
-							<input placeholder="Nom" value="{{$patient->nom}}"  style="width:400px;margin-left: 50px; " class="form-control" type="text" name="nom">
+							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman" href="{{route('secretaire.listerPatient')}}"> &nbsp;Retour</a>
+
 						</div>
 					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="adresse"> <strong>Adresse</strong></label>
-							<input placeholder="Adresse" value="{{$patient->adresse}}" style="width:400px;margin-left: 50px; " class="form-control" type="text" name="adresse">
-						</div>
-					</td>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="telephone"><strong>Téléphone</strong></label>
-							<input placeholder="7********" value="{{$patient->telephone}}" style="width:400px;margin-left: 50px; " class="form-control" type="text" name="telephone">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="age"><strong>Age</strong></label>
-							<input placeholder="Age" value="{{$patient->age}}" style="width:400px;margin-left: 50px; " class="form-control" type="number" name="age">
-						</div>
-					</td>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="prenom"><strong>Sexe</strong></label>
-							<select name="sexe">
-								<option value="{{$patient->sexe}}">Masculin</option>
-								<option value="{{$patient->sexe}}">Feminin</option>
-							</select>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="niveau"><strong>Niveau D'étude</strong></label>
-							<input placeholder="Niveau D'étude" value="{{$patient->niveauEtude}}" style="width:400px;margin-left: 50px; " class="form-control" type="text" name="niveauEtude">
-						</div>
-					</td>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="prenom"><strong>Profession</strong></label>
-							<input placeholder="Profession" value="{{$patient->profession}}" style="width:400px;margin-left: 50px; " class="form-control" type="text" name="profession">
-						</div>
-					</td>
-				</tr>
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="idAn"><strong>Indice Année</strong></label>
-							<input placeholder="/22" value="{{$patient->idAn}}" style="width:400px;margin-left: 50px; " class="form-control" type="text" name="idAn">
-						</div>
-					</td>
-                    <!--
+            </tr>
+        </div>
+    
+    </tbody>
+</form>
+	</table><br>
+
+</div>
+
+@endsection
+ <!--
 					<td>
 						<div class=" form-group">
 							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="service"><strong>Service Santé</strong></label>
@@ -102,36 +216,3 @@
 						</div>
 					</td>
                 -->
-				<tr>
-
-				</tr>
-				<tr>
-					<td><input type="hidden" name=""></td><td><input type="hidden" name=""></td>
-				</tr>
-				<tr>
-					<td><input type="hidden" name=""></td><td><input type="hidden" name=""></td>
-				</tr>
-				<tr>
-					<td><input type="hidden" name=""></td><td><input type="hidden" name=""></td>
-				</tr>
-				<tr>
-					<td>
-						<div class=" form-group">
-							<input class="btn btn-success"  style=" margin-left: 50px; "  type="submit" name="enregistrer" value="Enregistrer">
-
-						</div>
-					</td>
-					<td>
-						<div class=" form-group">
-							<input class="btn btn-danger"  style="margin-left: 50px; "  type="reset" name="annuler" value="Annuler">
-
-						</div>
-					</td>
-
-				</tr>
-			</tbody>
-		</form>
-	</table><br>
-
-</div>
-@endsection
