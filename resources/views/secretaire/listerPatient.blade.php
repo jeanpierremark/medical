@@ -1,26 +1,26 @@
 @extends('secretaire.accueil')
 @section('content')
-
-
+<h1 style="color:darkblue"><span class="fa fa-user">&nbsp;</span>Patients <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header justify-content-between" style="border-top:2px solid red">
-                    <h2>Liste des patient</h2>
-                </div>
+                <div class="card-header justify-content-between" style="border-top:4px solid #074b99">
+                    <h3>Liste des patients <span style="padding-left: 680px;"><a class="btn btn-success fa fa-user-plus"  href="{{route('secretaire.ajouterPatient')}}">&nbsp;Ajouter un patient</a></span></h3>
+                    
+                </div> 
                     <div class="card-body">
                    
                     <table id="example" class=" table  table-striped  " style=" background: white; border: 0px; width:100%"> 
                         <thead>
                           <tr>
-                            <th scope="col">N° Dossier</th>
-                            <th scope="col">nom</th>
-                            <th scope="col">prenom</th>
-                            <th scope="col">adresse</th>
-                            <th scope="col">telephone</th>
-                            <th scope="col">niveau</th>
-                            <th scope="col">âge</th>
+                            <th scope="col">N° dossier</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Adresse</th>
+                            <th scope="col">Téléphone</th>
+                            <th scope="col">Niveau</th>
+                            <th scope="col">Age</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
@@ -63,7 +63,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form action="{{route('patient')}}">
       <div class=" form-group">
 							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="service"><strong>Service Santé</strong></label>
 							<select name="domaine">
@@ -81,7 +81,7 @@
     
       <div class=" form-group modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
-        <input type="submit" class="btn btn-primary"  value="Orienter">
+        <button type="submit" class="btn btn-primary" >Orienter</button>
       </div>
       </form>
     </div>

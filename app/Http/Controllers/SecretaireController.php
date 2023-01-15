@@ -16,6 +16,12 @@ class SecretaireController extends Controller
     {
         return view('secretaire.agenda');
     }
+
+    public function listerendezVous()
+    {
+        return view('secretaire.listerRv');
+    }
+
     public function getrendezVous()
     {
         return view('secretaire.ajouterRv');

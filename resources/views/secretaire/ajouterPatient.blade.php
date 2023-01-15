@@ -1,10 +1,11 @@
 @extends('secretaire.dashboard')
 @section('content')
-<br><br>
-<div class="card col-xl-12 col-md-4 mb-4" style="border-top: 2px solid aqua; ">
+<h1 style="color:darkblue"><span class="fa fa-user">&nbsp;</span> Patients <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span></h1>
+
+<div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid darkblue; ">
 	<br>
 	<center> <caption ><span class="fa fa-plus" style="font-size:25px"> &nbsp; Ajouter Patient</span> </caption></center>
-	<br>
+	
 	<table>
 	
 		@if(isset($confirmation))
@@ -28,30 +29,19 @@
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Prénom</td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+               
                 <td>
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="prenom" >
+                    <input type="text" class=" form-control" name="prenom"  placeholder="Prénom">
                 </div>
             </div> <br>
             </td>
-            </tr> 
-            <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Nom</td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
                 
                 
                
@@ -59,116 +49,84 @@
             <div class="col-3">
                 <div class="input-group " style="width:400px">
                     <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class="form-control" name="nom">
+                    <input type="text" class="form-control" name="nom"  placeholder="Nom">
                 </div>
             </div><br>
-            </td>
-            </tr>
-			<tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Téléphone</td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td>
-            <div class="col-3">
-                <div class="input-group" style="width:400px">
-                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="telephone"  >
-                </div>
-            </div> <br>
             </td>
             </tr> 
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Adresse</td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                
-                
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Adresse</td>
                
-                <td>
-            <div class="col-3">
-                <div class="input-group " style="width:400px">
-                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class="form-control" name="adresse">
-                </div>
-            </div><br>
-            </td>
-            </tr>
-			<tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Profession</td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>
             <div class="col-3">
                 <div class="input-group" style="width:400px">
-                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="profession"  >
+                    <div class="input-group-text bg-primary"><i class="fas fa-home text-light"></i></div>
+                    <input type="text" class=" form-control" name="adresse"  placeholder="Adresse">
                 </div>
             </div> <br>
             </td>
-            </tr> 
-            <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Niveau d'Etude</td>
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Téléphone</td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
                 
                 
                
                 <td>
             <div class="col-3">
                 <div class="input-group " style="width:400px">
-                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class="form-control" name="niveauEtude">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-phone text-light"></i></div>
+                    <input type="text" class="form-control" name="telephone" placeholder="7********">
                 </div>
             </div><br>
             </td>
-            </tr>
-			<tr>
+            </tr> 
+           
+            <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Age</td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+               
                 <td>
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="number" class=" form-control" name="age" >
+                    <input type="number" class=" form-control" name="age"  placeholder="23" >
                 </div>
             </div> <br>
             </td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Profession</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class="form-control" name="profession"  placeholder="Profession">
+                </div>
+            </div><br>
+            </td>
             </tr> 
             <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Niveau d'Etude</td>
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class=" form-control" name="niveauEtude"  placeholder="Niveau d'Etude" >
+                </div>
+            </div> <br>
+            </td>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Sexe</td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
                 
                 
                
@@ -177,22 +135,17 @@
                 <div class="input-group " style="width:400px">
                     <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
                     <select name="sexe" >
-						<option value="Masculin">Masculin</option>
-						<option value="Feminin">Féminin</option>
-					</select>
+                        <option value="M">Masculin</option>
+                        <option value="F">Féminin</option>
+                    </select>
                 </div>
             </div><br>
             </td>
-            </tr>
-			<tr>
+            </tr> 
+            <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Indice Année</td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+               
                 <td>
             <div class="col-3">
                 <div class="input-group" style="width:400px">
@@ -201,28 +154,25 @@
                 </div>
             </div> <br>
             </td>
+            
             </tr> 
-           
+
+			
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>
 						<div class=" form-group">
-							<input class="bi bi-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="ajouter" value=" Ajouter">
+							<input  class="fa fa-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="ajouter" value=" Ajouter">
 
 						</div>
 					</td>
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td>
+               
+                
+               
+                
                 
                     <td>
 						<div class=" form-group">

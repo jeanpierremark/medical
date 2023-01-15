@@ -45,7 +45,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" style="background-color: aliceblue;" class="header fixed-top d-flex align-items-center ">
+  <header id="header" style="background-color: aliceblue;height: 40px;" class="header fixed-top d-flex align-items-center ">
 
     <div class="d-flex align-items-center justify-content-between">
       <div href="" class="logo d-flex align-items-center">
@@ -88,7 +88,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside  class="sidebar " style="background-image: url('../img/sec.jpeg'); margin-top: 20px ;" >
+  <aside  class="sidebar " style="background-image: url('../img/sec.jpeg'); margin-top: 0px ;" >
 
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -120,9 +120,9 @@
             <hr class="sidebar- text-light">
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-users"></i>Patients</a>
-                <div class="dropdown-menu bg-transparent border-0">
-                    <a href="{{ route('secretaire.ajouterPatient') }}" class="dropdown-item text-bg-light">Ajouter</a>
-                    <a href="{{ route('secretaire.listerPatient') }}" class="dropdown-item">Lister</a>
+                <div class="dropdown-menu  border-0">
+                    <a href="{{ route('secretaire.ajouterPatient') }}" class="dropdown-item text-secondary">Ajouter</a>
+                    <a href="{{ route('secretaire.listerPatient') }}" class="dropdown-item text-secondary">Lister</a>
                     
                     
                 </div>

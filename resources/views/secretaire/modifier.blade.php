@@ -1,7 +1,7 @@
-@extends('secretaire.dashboard')
+@extends('secretaire.accueil')
 @section('content')
-<br><br>
-<div class="card col-xl-12 col-md-4 mb-4" style="border-top: 2px solid aqua; ">
+<h1 style="color:darkblue"><span class="fa fa-user">&nbsp;</span>Patient <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Modifier</span></h1>
+<div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid #0c0476; ">
 	<br>
 	<center> <caption ><span class="bi bi-pencil-square" style="font-size:25px"> &nbsp; Modifier Patient</span> </caption></center>
 	<br>
@@ -199,20 +199,4 @@
 </div>
 
 @endsection
- <!--
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="service"><strong>Service Santé</strong></label>
-							<select name="domaine">
-								<option value="cardiologie">Cardiologie</option>
-								<option value="dermatologie">Dermatologie</option>
-								<option value="pediatrie">Pédiatrie</option>
-								<option value="neurologie">Neurologie</option>
-								<option value="nephrologie">Néphrologie</option>
-								<option value="gastro-enterologie">Gastro-Enterologie</option>
-								<option value="ophtalmologie">Ophtalmologie</option>
-								<option value="gynecologie">Gynécologie</option>
-							</select>
-						</div>
-					</td>
-                -->
+ 

@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::group(['prefix' => 'admin', 'middleware' =>['isAdmin','auth']], function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 });
@@ -31,15 +31,17 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('ajouterRendezVous', [MedecinController::class, 'getrendezVous'])->name('medecin.getrendezVous');
     route::get('agenda', [MedecinController::class, 'agenda'])->name('medecin.agenda');
 });
-    route::get('/editer/{id}', [SecretaireController::class, 'edit'])->name('editer');
+
     Route::group(['prefix' => 'secretaire', 'middleware' =>['isSecretaire','auth']], function () {
                  Route::get('dashboard', [SecretaireController::class, 'index'])->name('secretaire.dashboard');
                  Route::post('ajouterPatient',[SecretaireController::class,'ajoutPatient'])->name('patient');
                  Route::get('ajouterPatient', [SecretaireController::class, 'ajouter'])->name('secretaire.ajouterPatient');
                  Route::get('listerPatient', [SecretaireController::class, 'lister'])->name('secretaire.listerPatient');
                  route::post('modifier', [SecretaireController::class, 'update'])->name('update');
+                 route::get('editer{id}', [SecretaireController::class, 'edit'])->name('editer');
                  route::get('agenda', [SecretaireController::class, 'agenda'])->name('secretaire.agenda');
                  route::get('calendrier', [SecretaireController::class, 'getagenda'])->name('secretaire.getagenda');
                  route::get('ajouterRendezVous', [SecretaireController::class, 'getrendezVous'])->name('secretaire.getrendezVous');
+                 route::get('listerRendezVous', [SecretaireController::class, 'listerendezVous'])->name('secretaire.listerendezVous');
                  route::get('orienter/{id}', [SecretaireController::class, 'orienter'])->name('orienter');
                  });

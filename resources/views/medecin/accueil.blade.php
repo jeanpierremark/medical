@@ -128,7 +128,7 @@
   <main id="main" class="main">
 
     @yield('content')
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     
 
   </main><!-- End #main -->

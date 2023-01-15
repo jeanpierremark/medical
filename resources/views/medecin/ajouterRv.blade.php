@@ -1,6 +1,6 @@
 @extends('medecin.accueil')
 @section('content')
-<br><br>
+
 <div class="card  " style="border-top:2px solid #1ca8e3">
     <br>
    <center> <caption><span class="fa fa-calendar-alt"> &nbsp; Ajouter Rendez-vous</span> </caption></center>
