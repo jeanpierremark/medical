@@ -45,3 +45,8 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
                  route::get('listerRendezVous', [SecretaireController::class, 'listerendezVous'])->name('secretaire.listerendezVous');
                  route::get('orienter/{id}', [SecretaireController::class, 'orienter'])->name('orienter');
                  });
+Route::get('/getevent', [FullCalendarController::class,'getEvent'])->name('getevent');
+
+Route::post('/createevent',[FullCalendarController::class,'createEvent'])->name('createevent');
+
+Route::post('/deleteevent',[FullCalendarController::class,'deleteEvent'])->name('deleteevent');
