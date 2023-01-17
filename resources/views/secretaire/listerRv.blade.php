@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
-                    <h2>Liste des rendez-vous</h2>
+                    <h3>Liste des rendez-vous<span style="padding-left: 660px;"><a class="btn btn-warning fa fa-calendar-alt"  href="{{route('getevent')}}">&nbsp;Voir Calendrier</a></span></h3>
                 </div>
                     <div class="card-body">
                    
@@ -20,7 +20,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                           
+                        @foreach ($rdvs as $r)
+                                <tr>
+                                    <td>{{$r->patient->prenom}} {{$r->patient->nom}}</td>
+                                    <td>{{$r->date}}</td>
+                                    <td>{{$r->libelle}}</td>
+                                    
+                                    <td>
+                                       
+                                        <a href="" class="btn btn-warning"><span class="bi bi-pencil-square"></span></a>
+                                        <a href="" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
+
+                                        
+                                    </td>
+                                </tr>
+                            @endforeach
                            
                         </tbody>
                       </table>

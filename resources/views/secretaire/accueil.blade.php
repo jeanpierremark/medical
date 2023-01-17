@@ -180,16 +180,22 @@
   <script src="../assets/js/tab.js"></script>
   
 </body>
+@if(isset($events))
 <script>
         $(document).ready(function() {
+          if( @json($events)){
+          var rv= @json($events);
+          }
             var calendar = $('#calendar').fullCalendar({
               header: {
                 left: 'prev, next today',
                 center:'title',
                 right: 'month, agendaWeek, agendaDay, list'
-              }
+              },
+              events: rv
                 
             });
         });
     </script>
+@endif
 </html>

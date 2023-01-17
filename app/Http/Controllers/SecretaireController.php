@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medecin;
+use App\Models\Secretaire;
 use App\Models\Patient;
 use App\Models\Orienter;
 use App\Models\RendezVous;
@@ -18,12 +19,16 @@ class SecretaireController extends Controller
 
     public function agenda()
     {
+        
         return view('secretaire.agenda');
     }
 
     public function listerendezVous()
     {
-        return view('secretaire.listerRv');
+      $rdvs= RendezVous::with('patient')->get();
+      $patients= Patient::with('rendezvous')->get();
+     
+        return view('secretaire.listerRv',compact('rdvs','patients'));
     }
 
     public function getrendezVous($id)
@@ -39,23 +44,38 @@ class SecretaireController extends Controller
     public function ajouteRV(Request $request){
         $oriente= new Orienter();
         $rendezvous = new RendezVous();
-       // $req= DB::table('medecins')->select('id')->where('prenom',$request->medecin)->where('specialite',$request->domaine)->get();
-       $medecin= Medecin::all();         
-        $rendezvous->medecin_id = $medecin->id;
-        
-        
+       if(is_null($request->date) || is_null($request->medecin) || is_null($request->domaine) || is_null($request->libelle)){
+       $id=$request->id;
+       $var='Veuillez remplir tous les champs';
+        return  view('secretaire.ajouterRv' , compact('id','var'));
+       }
+       else{
+        $rend=0;
+        $send=0;
+        $result=0;
+        $medecin= Medecin::select('id')->wherePrenom($request->medecin)->get();
+        $sec=Secretaire::select('id')->whereidUser(Auth()->user()->id)->get();
         $rendezvous->date = $request->date;
         $rendezvous->libelle = $request->libelle;
         $rendezvous->patient_id = $request->id;
-        $result=$rendezvous->save();
-        if($result==1){
+        foreach($medecin as $med){ 
+            $rend = $med->id; }
+        foreach($sec as $se){ 
+                $send = $se->id; }
+   
+    $rendezvous->medecin_id = $rend;
+        if($rend!=0){
+            $result=$rendezvous->save();
+        }
+        if($result==1 &&  $send!=0){
             $oriente->patient_id=$request->id;
             $oriente->domaine= $request->domaine;
-            $oriente->secretaire_id= Auth()->user()->id;
+            $oriente->secretaire_id= $send;
 
             $oriente->save();
         }
-        return this->listerendezVous();
+    }
+        return $this->listerendezVous();
 
     }
 
@@ -126,4 +146,6 @@ class SecretaireController extends Controller
         }
         return $this->lister();
     }
+
+   
 }

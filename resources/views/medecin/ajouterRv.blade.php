@@ -4,7 +4,13 @@
 <h1 style="color:darkblue"><span class="fa fa-user">&nbsp;</span>Patients <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Ajouter rendez-vous</span></h1>
 <div class="card  " style="border-top:2px solid #1ca8e3">
     <br>
-   <center> <caption><span class="fa fa-calendar-alt"> &nbsp; Ajouter Rendez-vous</span> </caption></center>
+   <center> <caption><span class="fa fa-calendar-alt"> &nbsp; Ajouter Rendez-vous</span> </caption>
+   @if(isset($var))
+				
+                <div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>
+            
+@endif
+</center>
 <table >
 <form method="POST" action="{{route('medecin.rv')}}"  style=" margin-top:200px">
     @csrf

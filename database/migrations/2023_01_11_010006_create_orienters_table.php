@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('patient_id')->unsigned();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->integer('secretaire_id')->unsigned();
-            $table->foreign('secretaire_id')->references('id')->on('medecins');
+            $table->foreign('secretaire_id')->references('id')->on('secretaires');
             $table->timestamps();
         });
     }
