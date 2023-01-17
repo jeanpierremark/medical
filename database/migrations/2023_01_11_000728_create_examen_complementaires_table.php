@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('examen_complementaires', function (Blueprint $table) {
             $table->increments('id');
             $table->string('contenu');
-            $table->date('dateExamen');
+            $table->dateTime('dateExamen');
             $table->integer('consultation_id')->unsigned();
             $table->foreign('consultation_id')->references('id')->on('consultations');
             $table->timestamps();

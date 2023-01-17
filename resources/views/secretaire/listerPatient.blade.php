@@ -21,27 +21,25 @@
                             <th scope="col">Téléphone</th>
                             <th scope="col">Niveau</th>
                             <th scope="col">Age</th>
+                            <th scope="col">Profession</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($patients as $patient)
                                 <tr>
-                                    <td>{{$patient->id}}{{$patient->idAn}} </td>
+                                    <td>{{$patient->id}} /{{$patient->idAn}}</td>
                                     <td>{{$patient->nom}}</td>
                                     <td>{{$patient->prenom}}</td>
                                     <td>{{$patient->adresse}}</td>
                                     <td>{{$patient->telephone}}</td>
                                     <td>{{$patient->niveauEtude}}</td>
                                     <td>{{$patient->age}}</td>
+                                    <td>{{$patient->profession}}</td>
                                     <td>
                                         <a href="{{route('editer',$patient->id)}}" class="btn btn-warning"><span class="bi bi-pencil-square"></span></a>
-                                        <a href="{{route('secretaire.getrendezVous')}}" class="btn btn-info"><span class="fa fa-calendar-alt"></span></a>
-                                        <a href="" onclick="return confirm('Voulez-vous supprimmer ?')" class="btn btn-danger"><span class="fa fa-trash"></span></a>
-                                        <a href=""  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="fa fa-share-square"></span></a>
-                                        
-
-                                        
+                                        <a href="{{route('secretaire.getrendezVous',$patient->id)}}" class="btn btn-info"><span class="fa fa-calendar-alt"></span></a>
+                                        <a href="{{route('secretaire.supprimer', $patient->id)}}"  class="btn btn-danger"><span class="fa fa-trash"></span></a>                          
                                     </td>
                                 </tr>
                             @endforeach
@@ -53,6 +51,13 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

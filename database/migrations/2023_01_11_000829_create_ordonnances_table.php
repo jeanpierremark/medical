@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ordonnances', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dateOrdonnance');
+            $table->dateTime('dateOrdonnance');
             $table->integer('traitement_id')->unsigned();
             $table->foreign('traitement_id')->references('id')->on('traitements');
             $table->timestamps();

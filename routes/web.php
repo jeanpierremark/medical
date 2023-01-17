@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\SecretaireController;
+use App\Http\Controllers\FullCalendarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     Route::get('dashboard', [MedecinController::class, 'index'])->name('medecin.dashboard');
     Route::get('listerPatient', [MedecinController::class, 'lister'])->name('medecin.lister');
     route::get('ajouterRendezVous', [MedecinController::class, 'getrendezVous'])->name('medecin.getrendezVous');
+    route::post('ajouterRv', [MedecinController::class, 'ajouteRV'])->name('medecin.rv');
     route::get('agenda', [MedecinController::class, 'agenda'])->name('medecin.agenda');
 });
 
@@ -37,15 +39,16 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
                  Route::post('ajouterPatient',[SecretaireController::class,'ajoutPatient'])->name('patient');
                  Route::get('ajouterPatient', [SecretaireController::class, 'ajouter'])->name('secretaire.ajouterPatient');
                  Route::get('listerPatient', [SecretaireController::class, 'lister'])->name('secretaire.listerPatient');
-                 route::post('modifier', [SecretaireController::class, 'update'])->name('update');
+                 route::post('modifier{id}', [SecretaireController::class, 'update'])->name('update');
                  route::get('editer{id}', [SecretaireController::class, 'edit'])->name('editer');
                  route::get('agenda', [SecretaireController::class, 'agenda'])->name('secretaire.agenda');
                  route::get('calendrier', [SecretaireController::class, 'getagenda'])->name('secretaire.getagenda');
-                 route::get('ajouterRendezVous', [SecretaireController::class, 'getrendezVous'])->name('secretaire.getrendezVous');
+                 route::get('ajouterRendezVous{id}', [SecretaireController::class, 'getrendezVous'])->name('secretaire.getrendezVous');
+                 route::post('ajouterRv{id}', [SecretaireController::class, 'ajouteRV'])->name('secretaire.rv');
                  route::get('listerRendezVous', [SecretaireController::class, 'listerendezVous'])->name('secretaire.listerendezVous');
-                 route::get('orienter/{id}', [SecretaireController::class, 'orienter'])->name('orienter');
+                 route::get('supprimerPatient{id}', [SecretaireController::class, 'supprimer'])->name('secretaire.supprimer');
                  });
-Route::get('/getevent', [FullCalendarController::class,'getEvent'])->name('getevent');
+Route::get('/secretaire/calendrier', [FullCalendarController::class,'getEvent'])->name('getevent');
 
 Route::post('/createevent',[FullCalendarController::class,'createEvent'])->name('createevent');
 

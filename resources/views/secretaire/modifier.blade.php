@@ -7,20 +7,8 @@
 	<br>
 	<table>
 	
-		@if(isset($confirm))
-			@if($confirm==1)
 
-				<tr>
-				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					<td>
-						<div style="width: 183%; font-size: 20px;" class="alert alert-success ">Patient Ajouté avec succès!</div>
-					</td>
-				</tr>
-
-			@endif
-		@endif
-
-		<form method="POST" action="{{route('patient')}}"  style=" margin-top:200px">
+		<form method="POST" action="{{route('update',$patient->id)}}"  style=" margin-top:200px">
     @csrf
     
   
@@ -137,7 +125,7 @@
             <div class="col-3">
                 <div class="input-group " style="width:400px">
                     <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class="form-control" name="niveau" value="{{$patient->niveauEtude}}">
+                    <input type="text" class="form-control" name="niveauEtude" value="{{$patient->niveauEtude}}">
                 </div>
             </div><br>
             </td>

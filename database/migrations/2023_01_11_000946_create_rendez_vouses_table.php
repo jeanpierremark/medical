@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rendez_vouses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle');
-            $table->date('date');
+            $table->dateTime('date');
             $table->integer('patient_id')->unsigned();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->integer('medecin_id')->unsigned();

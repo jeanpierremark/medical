@@ -4,23 +4,27 @@
 
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid darkblue; ">
 	<br>
-	<center> <caption ><span class="fa fa-plus" style="font-size:25px"> &nbsp; Ajouter Patient</span> </caption></center>
-	
-	<table>
-	
-		@if(isset($confirmation))
+	<center> <caption ><span class="fa fa-plus" style="font-size:25px"> &nbsp; Ajouter Patient</span> </caption>
+    @if(isset($confirmation))
 			@if($confirmation==1)
 
-				<tr>
-				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					<td>
-						<div style="width: 183%; font-size: 20px;" class="alert alert-success ">Patient Ajouté avec succès!</div>
-					</td>
-				</tr>
+						<div style="width: 100%; font-size: 20px;" class="alert alert-success ">Patient Ajouté avec succès!</div>
+				
 
 			@endif
 		@endif
+        
+		@if(isset($var))
+				
+						<div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>
+					
+		@endif
+          
 
+
+</center>
+	
+	<table>
 		<form method="POST" action="{{route('patient')}}"  style=" margin-top:200px">
     @csrf
     
@@ -34,7 +38,12 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="prenom"  placeholder="Prénom">
+                    <input type="text" class=" form-control" name="prenom"  placeholder="Prénom" value=" <?php
+                    if(isset($_POST['prenom']))
+                    echo $_POST['prenom']
+                    ?> ">
+
+                 
                 </div>
             </div> <br>
             </td>
@@ -49,7 +58,10 @@
             <div class="col-3">
                 <div class="input-group " style="width:400px">
                     <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class="form-control" name="nom"  placeholder="Nom">
+                    <input type="text" class="form-control" name="nom"  placeholder="Nom" value=" <?php
+                    if(isset($_POST['nom']))
+                    echo $_POST['nom']
+                    ?>">
                 </div>
             </div><br>
             </td>
@@ -62,7 +74,10 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-home text-light"></i></div>
-                    <input type="text" class=" form-control" name="adresse"  placeholder="Adresse">
+                    <input type="text" class=" form-control" name="adresse"  placeholder="Adresse" value=" <?php
+                    if(isset($_POST['adresse']))
+                    echo $_POST['adresse']
+                    ?>">
                 </div>
             </div> <br>
             </td>
@@ -77,7 +92,8 @@
             <div class="col-3">
                 <div class="input-group " style="width:400px">
                     <div class="input-group-text bg-primary" ><i class="fas fa-phone text-light"></i></div>
-                    <input type="text" class="form-control" name="telephone" placeholder="7********">
+                    <input type="number" class="form-control" name="telephone" placeholder="7********" >
+                  
                 </div>
             </div><br>
             </td>
@@ -91,7 +107,10 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="number" class=" form-control" name="age"  placeholder="23" >
+                    <input type="number" class=" form-control" name="age"  placeholder="23"   value=" <?php
+                    if(isset($_POST['age']))
+                    echo $_POST['age']
+                    ?>">
                 </div>
             </div> <br>
             </td>
@@ -106,7 +125,10 @@
             <div class="col-3">
                 <div class="input-group " style="width:400px">
                     <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class="form-control" name="profession"  placeholder="Profession">
+                    <input type="text" class="form-control" name="profession"  placeholder="Profession"  value=" <?php
+                    if(isset($_POST['profession']))
+                    echo $_POST['profession']
+                    ?>" >
                 </div>
             </div><br>
             </td>
@@ -119,7 +141,10 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="niveauEtude"  placeholder="Niveau d'Etude" >
+                    <input type="text" class=" form-control" name="niveauEtude"  placeholder="Niveau d'Etude"  value=" <?php
+                    if(isset($_POST['niveauEtude']))
+                    echo $_POST['niveauEtude']
+                    ?>">
                 </div>
             </div> <br>
             </td>
@@ -150,7 +175,10 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="idAn" placeholder="/23" >
+                    <input type="number" class=" form-control" name="idAn" placeholder="23"   value=" <?php
+                    if(isset($_POST['idAn']))
+                    echo $_POST['idAn']
+                    ?>">
                 </div>
             </div> <br>
             </td>
@@ -168,7 +196,7 @@
 					</td>
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td><td></td>
                
                 
                
@@ -176,7 +204,7 @@
                 
                     <td>
 						<div class=" form-group">
-							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman" href="{{route('secretaire.listerPatient')}}"> &nbsp;Retour</a>
+							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman;" href="{{route('secretaire.listerPatient')}}"> &nbsp;Retour</a>
 
 						</div>
 					</td>

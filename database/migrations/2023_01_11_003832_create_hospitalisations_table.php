@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('hospitalisations', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dateEntree');
-            $table->date('dateSortie');
+            $table->dateTime('dateEntree');
+            $table->dateTime('dateSortie');
             $table->integer('patient_id')->unsigned();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->integer('medecin_id')->unsigned();

@@ -1,14 +1,13 @@
 @extends('medecin.accueil')
 @section('content')
 
+<h1 style="color:darkblue"><span class="fa fa-user">&nbsp;</span>Patients <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Ajouter rendez-vous</span></h1>
 <div class="card  " style="border-top:2px solid #1ca8e3">
     <br>
    <center> <caption><span class="fa fa-calendar-alt"> &nbsp; Ajouter Rendez-vous</span> </caption></center>
 <table >
-<form method="POST" action=""  style=" margin-top:200px">
+<form method="POST" action="{{route('medecin.rv')}}"  style=" margin-top:200px">
     @csrf
-    
-  
     <div class="card-body">
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
@@ -23,7 +22,7 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-calendar-alt text-light"></i></div>
-                    <input type="date" class=" form-control" id="inlineFormInputGroupUsername"  >
+                    <input type="text" class=" form-control" name="date" placeholder="aaaa/mm/jj --:--"  >
                 </div>
             </div> <br>
             </td>
@@ -49,6 +48,7 @@
             </div><br>
             </td>
             </tr>
+           
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>

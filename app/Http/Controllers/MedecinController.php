@@ -19,6 +19,7 @@ class MedecinController extends Controller
     {
         return view('medecin.ajouterRv');
     }
+    
     public function agenda()
     {
         return view('medecin.agenda');

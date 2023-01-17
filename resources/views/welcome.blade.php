@@ -83,7 +83,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label text-warning" for="remember">
+                                    <label class="form-check-label text-primary" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
@@ -97,7 +97,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    &nbsp; &nbsp; &nbsp;<a class=" text-warning" style="font-size: 20px; font-weight:bold" href="{{ route('password.request') }}">
+                                    &nbsp; &nbsp; &nbsp;<a class=" text-primary" style="font-size: 20px; font-weight:bold" href="{{ route('password.request') }}">
                                       Mot de passe oublié?
                                     </a>
                                 @endif
