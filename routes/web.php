@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MedecinController;
+use App\Http\Controllers\Notification;
 use App\Http\Controllers\SecretaireController;
 use App\Http\Controllers\FullCalendarController;
 /*
@@ -19,6 +20,7 @@ use App\Http\Controllers\FullCalendarController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('dashboard', [Notification::class, 'envoiSMS'])->name('message');
 
 Auth::routes();
 

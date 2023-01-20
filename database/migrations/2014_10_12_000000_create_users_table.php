@@ -17,9 +17,13 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('prenom');
+            $table->string('nom');
+            $table->string('telephone');
+            $table->string('adresse');
+            $table->string('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,28 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Helpers\Sms;
+use Illuminate\Http\Request;
+
 
 class Notification extends Controller
 {
-    /*public function envoiSMS(){
+     /*  public function envoiSMS(){
         $basic  = new \Vonage\Client\Credentials\Basic("ce6e68da", "lYQZwgErBAzWgni7");
         $client = new \Vonage\Client($basic);
-
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("221784794446", SJD-Medical, 'Bonjour cher(e) patient vous avez rendez-vous demain')
+            new \Vonage\SMS\Message\SMS("221772268082", 'SJD-Medical', 'Bonjour Cher Patient vous avez rendez-vous demain (jp)')
         );
         
         $message = $response->current();
         
-        if ($message->getStatus() == 0) {
-            echo "The message was sent successfully\n";
-        } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
-        }
+        return view('welcome');
     }*/
-    public function sendSMS()
+ public function sendSMS()
     {
         $config = array(
             'clientId' => config('app.clientId'),
@@ -37,18 +33,9 @@ class Notification extends Controller
             'token' => $data['access_token']
         );
 
-        $response = $osms->sendSms(
-        // sender
-            'tel:+221772265039',
-            // receiver
-            'tel:+221773248363',
-            // message
-            'bonjour vous avez rendez-vous demain ',
-            //name
-            'SJD-Medical'
-        );
-
-        
+        $response = $osms->sendSms('tel:+221772265039','tel:+224771380492','Bonjourrrrrrrrrrrr','Devscom');
+            
+         return view('welcome');
     }
     
 }
