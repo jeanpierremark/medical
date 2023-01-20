@@ -15,12 +15,8 @@ return new class extends Migration
     {
         Schema::create('medecins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->string('prenom');
-            $table->string('nom');
-            $table->string('telephone');
-            $table->string('adresse');
+            $table->integer('idUser')->unsigned();
+            $table->foreign('idUser')->references('id')->on('users')->onDelete("cascade");
             $table->string('specialite');
             $table->timestamps();
         });
