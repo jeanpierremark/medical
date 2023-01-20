@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-center justify-content-between" style="border-top:2px solid #37c7cd">
+                <div class="card-header text-center justify-content-between" style="border-top:4px solid #37c7cd">
                     <h2>Liste des patient</h2>
                 </div>
                     <div class="card-body">
@@ -26,19 +26,19 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($patients as $patient)
+                            @foreach ($oriente as $p)
                                 <tr>
-                                    <td>{{$patient->id}}{{$patient->idAn}} </td>
-                                    <td>{{$patient->nom}}</td>
-                                    <td>{{$patient->prenom}}</td>
-                                    <td>{{$patient->adresse}}</td>
-                                    <td>{{$patient->telephone}}</td>
-                                    <td>{{$patient->niveauEtude}}</td>
-                                    <td>{{$patient->age}}</td>
+                                    <td>{{$p->patient->id}} /{{$p->patient->idAn}} </td>
+                                    <td>{{$p->patient->nom}}</td>
+                                    <td>{{$p->patient->prenom}}</td>
+                                    <td>{{$p->patient->adresse}}</td>
+                                    <td>{{$p->patient->telephone}}</td>
+                                    <td>{{$p->patient->niveauEtude}}</td>
+                                    <td>{{$p->patient->age}}</td>
                                     <td>
-                                        <a href="" class="btn btn-primary" ><span class="bi bi-eye text-light"></span></a>
-                                        <a href="{{route('medecin.getrendezVous')}}" class="btn btn-warning"><span class="fa fa-calendar-alt"></span></a>
-                                        <a href="" class="btn " style="background-color:#37c7cd"><span class="bi bi-file-text-fill text-light"></span></a>
+                                       
+                                        <a href="{{route('medecin.getrendezVous',$p->patient->id)}}" class="btn btn-warning"><span class="fa fa-calendar-alt"></span></a>
+                                        <a href="{{route('medecin.addconsultation',$p->patient->id)}}" class="btn btn-info " ><span class="bi bi-file-text-fill text-light"></span></a>
 
                                         
                                     </td>
@@ -54,3 +54,6 @@
 </div>
 @endsection
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>

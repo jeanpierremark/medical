@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('medecins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idUser')->unsigned();
-            $table->foreign('idUser')->references('id')->on('users');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
             $table->string('prenom');
             $table->string('nom');
             $table->string('telephone');

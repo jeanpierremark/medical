@@ -5,10 +5,10 @@
             <h1 style="color:darkblue"><span class="fa fa-calendar-alt">&nbsp;</span>Agenda <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Rendez-vous</span></h1>
             </p>
             <div class="panel panel-primary">
-                <div class="panel-heading text-center bg-primary" style="color:white;margin-bottom:5px">
-                  <span class="fa fa-calendar-alt"></span> Agenda des rendez-vous
+                <div class="panel-heading text-center bg-warning" style="color:white;margin-bottom:5px">
+                 <h1> <span class="fa fa-calendar-alt"></span> Agenda des rendez-vous</h1>
                 </div>
-                <div class="panel-body" style="background-color:white">
+                <div class="panel-body bg-info-gradient" style="background-color:white">
                     <div id='calendar'></div>
                 </div>
             </div>

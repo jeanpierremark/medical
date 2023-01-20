@@ -23,6 +23,24 @@ class FullCalendarController extends Controller
         return view('secretaire.calendrier',compact('events'));
 
     }
+
+    public function agenda(){
+        $events=array();
+        $rdvs= RendezVous::with('patient')->get();
+        $patients= Patient::with('rendezvous')->get();
+        
+        foreach($rdvs as $rv){
+            $events[] =[
+                'title' => [$rv->patient->prenom ,$rv->patient->nom],
+                'date' => $rv->date,
+            ];
+        }
+
+        return view('medecin.calendrier',compact('events'));
+
+    }
+
+    
     public function createEvent(Request $request){
         $data = $request->except('_token');
         $events = RendezVous::insert($data);

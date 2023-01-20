@@ -36,11 +36,11 @@
                                 <div class="card-body ">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold" href="">Consul- tations</a>
+                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold" href="{{route('medecin.listeconsult')}}">Consul- tations</a>
                                            
                                         </div>
                                         <div class="col-auto">
-                                            <a href=""><i class="fas fa-list  fa-3x " style=" color: darkblue;"></i></a>
+                                            <a href="{{route('medecin.listeconsult')}}"><i class="fas fa-list  fa-3x " style=" color: darkblue;"></i></a>
                                         </div>
                                     </div>
                                 </div>

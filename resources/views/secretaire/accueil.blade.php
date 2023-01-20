@@ -103,13 +103,17 @@
                     Accueil
                 </a>
             </li>
+           
             <hr class="sidebar- text-light">
-            <li class="nav-item">
-                <a class="nav-link " href="{{route('secretaire.agenda')}}">
-                    <i class="fas  fa-calendar-alt "></i>
-                    Agenda
-                </a>
-            </li>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-users"></i>Agenda</a>
+                <div class="dropdown-menu  border-0">
+                    <a href="{{ route('secretaire.listerendezVous') }}" class="dropdown-item text-secondary">Liste rendez-vous</a>
+                    <a href="{{ route('getevent') }}" class="dropdown-item text-secondary">Calendrier</a>
+                    
+                    
+                </div>
+            </div>
             <!--
           <hr class="sidebar- text-light">
             <li class="nav-item">

@@ -46,7 +46,7 @@
         </style>
     </head>
     <body style="background-image:url('img/accueil.jpg');background-size:100%">
-    <div class="container" style="margin-top:200px">
+    <div class="container " style="margin-top:200px">
     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

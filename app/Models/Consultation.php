@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Consultation extends Model
 {
     use HasFactory;
-    protected $fillable = array('motifConsultation','dateConsultation','modeDeVie','decision','histoireMaladie','maladie','alegie',
+    protected $fillable = array('motifConsultation','dateConsultation','modeDeVie','decision','histoireMaladie','maladie','alergie',
                                 'handicap','operation');
    protected $rules = array('motif'=>'required|min:10','modevie'=>'required|min:10','decision'=>'required|min:10');
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medecin extends Model
 {
     use HasFactory;
-    protected $fillable = array('nom','prenom','telephone','adresse','specialite','idUser');
+    protected $fillable = array('nom','prenom','telephone','adresse','specialite');
 
 
     public function consultation(){

@@ -1,4 +1,4 @@
-@extends('secretaire.accueil')
+@extends('medecin.accueil')
 @section('content')
 <h1 style="color:darkblue"><span class="fa fa-calendar-alt">&nbsp;</span>Agenda <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Rendez-vous</span></h1>
 <div class="container mt-5">
@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
-                    <h3>Liste des rendez-vous<span style="padding-left: 660px;"><a class="btn btn-warning fa fa-calendar-alt"  href="{{route('getevent')}}">&nbsp;Voir Calendrier</a></span></h3>
+                    <h3>Liste des rendez-vous<span style="padding-left: 660px;"><a class="btn btn-warning fa fa-calendar-alt"  href="{{route('medecin.getevent')}}">&nbsp;Voir Calendrier</a></span></h3>
                 </div>
                     <div class="card-body">
                    
@@ -28,8 +28,8 @@
                                     
                                     <td>
                                        
-                                        <a href="{{route('secretaire.editRV',$r->id)}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
-                                        <a href="{{route('secretaire.supprimerRv',$r->id)}}" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
+                                        <a href="" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
+                                        <a href="" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
 
                                         
                                     </td>

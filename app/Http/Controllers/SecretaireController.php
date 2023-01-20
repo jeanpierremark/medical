@@ -63,7 +63,7 @@ class SecretaireController extends Controller
         foreach($sec as $se){ 
                 $send = $se->id; }
    
-    $rendezvous->medecin_id = $rend;
+        $rendezvous->medecin_id = $rend;
         if($rend!=0){
             $result=$rendezvous->save();
         }
@@ -146,6 +146,28 @@ class SecretaireController extends Controller
         }
         return $this->lister();
     }
+    public function modifierRV($id)
+    {
+        $rendezvous = RendezVous::find($id);
+        $rdvs= RendezVous::with('patient')->whereId($id)->get();
+        $patient= Patient::with('rendezvous')->get();
+        return view('secretaire.rendezvous',compact('rendezvous','rdvs','patient'));
+    }
 
+    public function updateRV(Request $request)
+    {
+        $rv = RendezVous::find($request->id);
+        $rv->libelle = $request->libelle;
+        $rv->date = $request->date;
+        $rv->save();
+        return $this->listerendezVous();
+    }
    
+    public function supprimerRv($id){
+        $rv = RendezVous::find($id);
+        if($rv != null){
+            $rv->delete();
+        }
+        return $this->listerendezVous();
+    }
 }

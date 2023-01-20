@@ -29,9 +29,13 @@ Route::group(['prefix' => 'admin', 'middleware' =>['isAdmin','auth']], function 
 Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], function () {
     Route::get('dashboard', [MedecinController::class, 'index'])->name('medecin.dashboard');
     Route::get('listerPatient', [MedecinController::class, 'lister'])->name('medecin.lister');
-    route::get('ajouterRendezVous', [MedecinController::class, 'getrendezVous'])->name('medecin.getrendezVous');
-    route::post('ajouterRv', [MedecinController::class, 'ajouteRV'])->name('medecin.rv');
+    route::get('ajouterRendezVous{id}', [MedecinController::class, 'getrendezVous'])->name('medecin.getrendezVous');
+    route::post('ajouterRv{id}', [MedecinController::class, 'ajouteRV'])->name('medecin.rv');
     route::get('agenda', [MedecinController::class, 'agenda'])->name('medecin.agenda');
+    route::get('listeRendezVous', [MedecinController::class, 'listerendezVous'])->name('medecin.listeRv');
+    route::get('listeConsultation', [MedecinController::class, 'listeConsultation'])->name('medecin.listeconsult');
+    route::get('ajouterConsultation{id}', [MedecinController::class, 'getconsultation'])->name('medecin.addconsultation');
+    route::post('ajoutconsultation{id}', [MedecinController::class, 'ajouterCons'])->name('medecin.addcons');
 });
 
     Route::group(['prefix' => 'secretaire', 'middleware' =>['isSecretaire','auth']], function () {
@@ -41,14 +45,19 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
                  Route::get('listerPatient', [SecretaireController::class, 'lister'])->name('secretaire.listerPatient');
                  route::post('modifier{id}', [SecretaireController::class, 'update'])->name('update');
                  route::get('editer{id}', [SecretaireController::class, 'edit'])->name('editer');
+                 Route::get('modifierrendezVous{id}', [SecretaireController::class, 'modifierRV'])->name('secretaire.editRV');
+                 Route::post('saverendezVous{id}', [SecretaireController::class, 'updateRV'])->name('secretaire.updateRV');
                  route::get('agenda', [SecretaireController::class, 'agenda'])->name('secretaire.agenda');
                  route::get('calendrier', [SecretaireController::class, 'getagenda'])->name('secretaire.getagenda');
                  route::get('ajouterRendezVous{id}', [SecretaireController::class, 'getrendezVous'])->name('secretaire.getrendezVous');
                  route::post('ajouterRv{id}', [SecretaireController::class, 'ajouteRV'])->name('secretaire.rv');
                  route::get('listerRendezVous', [SecretaireController::class, 'listerendezVous'])->name('secretaire.listerendezVous');
                  route::get('supprimerPatient{id}', [SecretaireController::class, 'supprimer'])->name('secretaire.supprimer');
+                 route::get('supprimerRendezVous{id}', [SecretaireController::class, 'supprimerRv'])->name('secretaire.supprimerRv');
                  });
 Route::get('/secretaire/calendrier', [FullCalendarController::class,'getEvent'])->name('getevent');
+Route::get('/medecin/calendrier', [FullCalendarController::class,'agenda'])->name('medecin.getevent');
+
 
 Route::post('/createevent',[FullCalendarController::class,'createEvent'])->name('createevent');
 

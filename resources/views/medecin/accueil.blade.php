@@ -12,7 +12,7 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -99,12 +99,16 @@
                 </a>
             </li>
             <hr class="sidebar- text-light">
-            <li class="nav-item">
-                <a class="nav-link " href="{{route('medecin.agenda')}}">
-                    <i class="fas  fa-calendar-alt "></i>
-                    Agenda
-                </a>
-            </li>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-users"></i>Agenda</a>
+                <div class="dropdown-menu  border-0">
+                    <a href="{{route('medecin.listeRv')}}" class="dropdown-item text-secondary">Liste rendez-vous</a>
+                    <a href="{{ route('medecin.getevent') }}" class="dropdown-item text-secondary">Calendrier</a>
+                    
+                    
+                </div>
+            </div>
+            
           <hr class="sidebar- text-light">
             <li class="nav-item">
                 <a class="nav-link " href="{{route('medecin.lister')}}">
@@ -113,7 +117,7 @@
             </li>
             <hr class="sidebar- text-light">
             <li class="nav-item">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="{{route('medecin.listeconsult')}}">
                     <i class="fas fa-file"></i>
                     Consultations
                 </a>
@@ -134,7 +138,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footer"  style="background-color:white">
     <div class="copyright">
       &copy; Copyright 2022 <strong>SJD</strong>. Tous droits réservés
     </div>
@@ -153,9 +157,7 @@
   
 
 
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+  
   <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/chart.js/chart.min.js"></script>
@@ -168,5 +170,22 @@
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/tab.js"></script>
 </body>
-
+@if(isset($events))
+<script>
+        $(document).ready(function() {
+          if( @json($events)){
+          var rv= @json($events);
+          }
+            var calendar = $('#calendar').fullCalendar({
+              header: {
+                left: 'prev, next today',
+                center:'title',
+                right: 'month, agendaWeek, agendaDay, list'
+              },
+              events: rv
+                
+            });
+        });
+    </script>
+@endif
 </html>

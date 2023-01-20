@@ -32,11 +32,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center justify-content-between">
                                         <div class="col mr-2">
-                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold " href="{{route('secretaire.getagenda')}}">Agenda</a>
+                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold " href="{{route('medecin.getevent')}}">Agenda</a>
                                             
                                         </div>
                                         <div class="col-auto">
-                                            <a href=""><i class="fas fa-calendar-alt fa-3x" style=" color: darkblue;"></i></a>
+                                            <a href="{{route('medecin.getevent')}}"><i class="fas fa-calendar-alt fa-3x" style=" color: darkblue;"></i></a>
                                         </div>
                                     </div>
                                 </div>

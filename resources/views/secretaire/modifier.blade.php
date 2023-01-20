@@ -6,9 +6,10 @@
 	<center> <caption ><span class="bi bi-pencil-square" style="font-size:25px"> &nbsp; Modifier Patient</span> </caption></center>
 	<br>
 	<table>
-	
+
 
 		<form method="POST" action="{{route('update',$patient->id)}}"  style=" margin-top:200px">
+      
     @csrf
     
   
@@ -149,7 +150,7 @@
             </td>
             </tr> 
            
-           
+          
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>
