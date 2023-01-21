@@ -18,7 +18,7 @@ class MedecinController extends Controller
     {   
       
         $rend=0;
-        $specia=Medecin::select('specialite')->whereidUser(Auth()->user()->id)->get();
+        $specia=Medecin::select('specialite')->whereuserId(Auth()->user()->id)->get();
         foreach($specia as $sp){ 
             $rend = $sp->specialite;
            
@@ -40,7 +40,7 @@ class MedecinController extends Controller
     public function ajouteRV(Request $request)
     {
         $idmed=0;
-        $med = Medecin::select('id')->whereidUser(Auth()->user()->id)->get();
+        $med = Medecin::select('id')->whereuserId(Auth()->user()->id)->get();
         foreach($med as $m){
             $idmed=$m->id;
         }
@@ -76,7 +76,7 @@ class MedecinController extends Controller
 
     public function listeConsultation(){
         $idmed=0;
-        $med= Medecin::select('id')->whereidUser(Auth()->user()->id)->get();
+        $med= Medecin::select('id')->whereuserId(Auth()->user()->id)->get();
         foreach($med as $m){
             $idmed=$m->id;
         }

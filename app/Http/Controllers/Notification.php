@@ -33,7 +33,7 @@ class Notification extends Controller
             'token' => $data['access_token']
         );
 
-        $response = $osms->sendSms('tel:+221772265039','tel:+224771380492','Bonjourrrrrrrrrrrr','Devscom');
+        $response = $osms->sendSms('tel:+221772265039','tel:+224771380492','Bonjourrrrrrrrrrrr','SJD-Medical');
             
          return view('welcome');
     }

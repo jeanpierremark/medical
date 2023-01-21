@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Secretaire extends Model
 {
     use HasFactory;
-    protected $fillable = array('nom','prenom','telephone','adresse');
+    protected $fillable = array();
     public function user(){
         return $this->belongsTo(User::class);
     }

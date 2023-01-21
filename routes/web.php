@@ -25,9 +25,20 @@ Route::get('dashboard', [Notification::class, 'envoiSMS'])->name('message');
 Auth::routes();
 
 
-Route::group(['prefix' => 'admin', 'middleware' =>['isAdmin','auth']], function () {
-    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-});
+    /*  Route Administrateur */
+    Route::get('/ajoutSec', [AdminController::class, 'ajoutSec'])->name('ajouterSec');
+    Route::post('/ajoutMedecin', [AdminController::class, 'ajoutMedecin'])->name('ajouterMedecin');
+    Route::get('ajouterMedecin', [AdminController::class, 'ajouter'])->name('admin.medecin.ajouterMedecin');
+    Route::group(['prefix' => 'admin', 'middleware' =>['isAdmin','auth']], function () {
+                 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+                 
+                 Route::get('accueil', [AdminController::class, 'accueil'])->name('admin.accueil');
+                 Route::get('statistique', [AdminController::class, 'statistique'])->name('admin.statistique');
+                 Route::get('listerMedecin', [AdminController::class, 'listerMed'])->name('admin.medecin.listerMedecin');
+                 Route::post('/modifier{id}', [AdminController::class, 'modifierUser'])->name('admin.medecin.modifier');
+                 Route::get('/editUser{id}', [AdminController::class, 'editUser'])->name('admin.medecin.editer');
+                 Route::get('/supprimer{id}', [AdminController::class, 'supprimer'])->name('admin.medecin.supprimer');
+                 });
 Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], function () {
     Route::get('dashboard', [MedecinController::class, 'index'])->name('medecin.dashboard');
     Route::get('listerPatient', [MedecinController::class, 'lister'])->name('medecin.lister');

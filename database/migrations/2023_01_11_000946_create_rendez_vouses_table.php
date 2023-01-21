@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('libelle');
             $table->dateTime('date');
             $table->integer('patient_id')->unsigned();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete("cascade");
             $table->integer('medecin_id')->unsigned();
-            $table->foreign('medecin_id')->references('id')->on('medecins');
+            $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete("cascade");
             $table->timestamps();
         });
     }
