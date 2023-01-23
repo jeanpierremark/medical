@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('libelle');
             $table->integer('quantite');
             $table->integer('ordonnance_id')->unsigned();
-            $table->foreign('ordonnance_id')->references('id')->on('ordonnances');
+            $table->foreign('ordonnance_id')->references('id')->on('ordonnances')->onDelete("cascade");
             $table->timestamps();
         });
     }

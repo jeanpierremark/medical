@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('orienters', function (Blueprint $table) {
             $table->string('domaine');
             $table->integer('patient_id')->unsigned();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete("cascade");
             $table->integer('secretaire_id')->unsigned();
-            $table->foreign('secretaire_id')->references('id')->on('secretaires');
+            $table->foreign('secretaire_id')->references('id')->on('secretaires')->onDelete("cascade");
             $table->timestamps();
         });
     }

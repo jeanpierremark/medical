@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('patient_id')->unsigned();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete("cascade");
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('medecins');
+            $table->foreign('user_id')->references('id')->on('medecins')->onDelete("cascade");
             $table->string('motifConsultation');
             $table->date('dateConsultation');
             $table->string('modeDevie');

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('libelle');
             $table->integer('traitement_cours_id')->unsigned();
-            $table->foreign('traitement_cours_id')->references('id')->on('traitement_en_cours');
+            $table->foreign('traitement_cours_id')->references('id')->on('traitement_en_cours')->onDelete("cascade");
             $table->timestamps();
         });
     }

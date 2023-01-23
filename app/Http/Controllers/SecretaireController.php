@@ -204,7 +204,7 @@ class SecretaireController extends Controller
     }
 
     public function supprimer($id){
-        $ress=0;
+        /*$ress=0;
         $oriente=Orienter::wherepatientId($id)->get();
         $patient = Patient::find($id);
         if($oriente!= null){
@@ -213,7 +213,10 @@ class SecretaireController extends Controller
                 $patient->delete();
                 
             }
-        }
+        }*/
+            $patient = Patient::find($id);      
+            $patient->delete();
+       
         
         return $this->lister();
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('contenu');
             $table->dateTime('dateExamen');
             $table->integer('consultation_id')->unsigned();
-            $table->foreign('consultation_id')->references('id')->on('consultations');
+            $table->foreign('consultation_id')->references('id')->on('consultations')->onDelete("cascade");
             $table->timestamps();
         });
     }

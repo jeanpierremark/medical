@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->dateTime('dateOrdonnance');
             $table->integer('traitement_id')->unsigned();
-            $table->foreign('traitement_id')->references('id')->on('traitements');
+            $table->foreign('traitement_id')->references('id')->on('traitements')->onDelete("cascade");
             $table->timestamps();
         });
     }
