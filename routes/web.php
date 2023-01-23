@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\Notification;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MedecinCalendar;
+use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\SecretaireController;
 use App\Http\Controllers\FullCalendarController;
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\FullCalendarController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('accueil');
 Route::get('dashboard', [Notification::class, 'envoiSMS'])->name('message');
 
 Auth::routes();
@@ -49,6 +50,7 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('listeConsultation', [MedecinController::class, 'listeConsultation'])->name('medecin.listeconsult');
     route::get('ajouterConsultation{id}', [MedecinController::class, 'getconsultation'])->name('medecin.addconsultation');
     route::post('ajoutconsultation{id}', [MedecinController::class, 'ajouterCons'])->name('medecin.addcons');
+    Route::get('modifierStatut', [MedecinController::class, 'changerstatut'])->name('medecin.statut');
 });
 
     Route::group(['prefix' => 'secretaire', 'middleware' =>['isSecretaire','auth']], function () {
@@ -69,7 +71,7 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
                  route::get('supprimerRendezVous{id}', [SecretaireController::class, 'supprimerRv'])->name('secretaire.supprimerRv');
                  });
 Route::get('/secretaire/calendrier', [FullCalendarController::class,'getEvent'])->name('getevent');
-Route::get('/medecin/calendrier', [FullCalendarController::class,'agenda'])->name('medecin.getevent');
+Route::get('/medecin/calendrier', [MedecinCalendar::class,'agenda'])->name('medecin.getevent');
 
 
 Route::post('/createevent',[FullCalendarController::class,'createEvent'])->name('createevent');

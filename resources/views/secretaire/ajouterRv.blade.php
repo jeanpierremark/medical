@@ -28,7 +28,7 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-calendar-alt text-light"></i></div>
-                    <input type="text" class=" form-control" name="date" placeholder="aaaa/mm/jj --:--"  >
+                    <input type="text" class=" form-control" name="date" placeholder="aaaa-mm-jj --:--"  >
                 </div>
             </div> <br>
             </td>

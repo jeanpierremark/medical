@@ -62,9 +62,14 @@ class MedecinController extends Controller
        return $this->listeRendezVous();
     }
     public function listeRendezVous(){
+        $spe='';
+        $med= Medecin::select('specialite')->whereuserId(Auth()->user()->id)->get();
+        foreach($med as $m){
+            $spe=$m->specialite;
+        }
        
-        $rdvs= RendezVous::with('patient')->get();
-        $patients= Patient::with('rendezvous')->get();
+        $rdvs= RendezVous::with('patient')->wherestatut('non_effectif')->get();
+        $patients= Orienter::with('patient')->wheredomaine($spe)->get();
      
         return view('medecin.listeRendezVous',compact('rdvs','patients'));
     }
@@ -86,7 +91,7 @@ class MedecinController extends Controller
 
     public function ajouterCons(Request $request){
         $idmed=0;
-        $med= Medecin::select('id')->whereidUser(Auth()->user()->id)->get();
+        $med= Medecin::select('id')->whereuserId(Auth()->user()->id)->get();
         foreach($med as $m){
             $idmed=$m->id;
         }
@@ -116,6 +121,13 @@ class MedecinController extends Controller
             
             return $this->listeConsultation();
 
+    }
+
+    public function changerstatut(Request $request){
+        $rv=RendezVous::find($request->id);
+        $rv->statut=$request->statut;
+        $rv->save();
+        return $this->listeRendezVous();
     }
 
 }

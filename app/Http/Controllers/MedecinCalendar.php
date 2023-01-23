@@ -2,40 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RendezVous;
+use App\Models\Medecin;
 use App\Models\Patient;
+use App\Models\Orienter;
+use App\Models\RendezVous;
 use Illuminate\Http\Request;
 
-class FullCalendarController extends Controller
+class MedecinCalendar extends Controller
 {
-    public function getEvent(){
-        $events=array();
-        $rdvs= RendezVous::with('patient')->wherestatut('non_effectif')->get();
-        $patients= Patient::with('rendezvous')->get();
-        
-        foreach($rdvs as $rv){
-            $events[] =[
-                'title' => [$rv->patient->prenom ,$rv->patient->nom],
-                'date' => $rv->date,
-            ];
-        }
 
-        return view('secretaire.calendrier',compact('events'));
-
-    }
 
     public function agenda(){
         $events=array();
-        $rdvs= RendezVous::with('patient')->get();
-        $patients= Patient::with('rendezvous')->get();
+        $spe='';
+        $med= Medecin::select('specialite')->whereuserId(Auth()->user()->id)->get();
+        foreach($med as $m){
+            $spe=$m->specialite;
+        }
+       
+        $rdvs= RendezVous::with('patient')->wherestatut('non_effectif')->get();
+        $patient= Orienter::with('patient')->wheredomaine($spe)->get();
         
         foreach($rdvs as $rv){
+            foreach($patient as $p){
+                if($rv->patient->id == $p->patient->id){
             $events[] =[
                 'title' => [$rv->patient->prenom ,$rv->patient->nom],
                 'date' => $rv->date,
             ];
         }
-
+        }
+    }
         return view('medecin.calendrier',compact('events'));
 
     }
