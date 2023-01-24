@@ -40,7 +40,8 @@ class LoginController extends Controller
             return route('secretaire.dashboard');
         }
         else{
-            return redirect()->route('login')->with('error','email and password are wrong');
+            $error='email et/ou mot de passe incorrete(s)!';
+            return redirect()->route('accueil',compact('error'));
         }
     }
     /**
@@ -52,7 +53,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    public function login(Request $request){
+    /*public function login(Request $request){
         $input = $request->all();
         $this->validate($request, [
             'email' => 'required|email',
@@ -72,5 +73,5 @@ class LoginController extends Controller
                 return redirect()->route('login')->with('error','email and password are wrong');
             }
         }
-    }
+    }*/
 }

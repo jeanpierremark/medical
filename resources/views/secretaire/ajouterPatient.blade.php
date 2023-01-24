@@ -167,24 +167,7 @@
             </div><br>
             </td>
             </tr> 
-            <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Indice Année</td>
-               
-                <td>
-            <div class="col-3">
-                <div class="input-group" style="width:400px">
-                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="number" class=" form-control" name="idAn" placeholder="23"   value=" <?php
-                    if(isset($_POST['idAn']))
-                    echo $_POST['idAn']
-                    ?>">
-                </div>
-            </div> <br>
-            </td>
-            
-            </tr> 
-
+         
 			
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>

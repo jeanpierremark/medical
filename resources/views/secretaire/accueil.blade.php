@@ -81,6 +81,14 @@
                                         @csrf
                                     </form>
             </li>
+            <li>
+            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href=""
+                                       >
+                                       Modifier mot de passe
+                                    </a>
+
+                                    
+            </li>
 
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
@@ -143,7 +151,76 @@
   <main id="main" class="main">
 
    @yield('content')
-   
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title bi bi-pencil-square" id="exampleModalLabel">Modifiier Mot de passe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      @if(isset($var))
+				
+        <div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>
+
+      @endif
+		<form method="POST" action="{{route('secretaire.passe')}}" >
+        @csrf
+    
+            <tr>
+          
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Ancien mot de passe</td>
+                
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-lock text-light"></i></div>
+                    <input type="password" class="form-control" name="apass" value="">
+                </div>
+            </div><br>
+            </td>
+            </tr>
+			<tr>
+           
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Nouveau mot de passe</td>
+                
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-lock text-light"></i></div>
+                    <input type="password" class=" form-control" name="npass" value="" >
+                </div>
+            </div> <br>
+            </td>
+            </tr> 
+     
+            <tr>
+           
+           <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >confirmer mot de passe</td>
+           
+           <td>
+       <div class="col-3">
+           <div class="input-group" style="width:400px">
+               <div class="input-group-text bg-primary"><i class="fas fa-lock text-light"></i></div>
+               <input type="password" class=" form-control" name="cpass" value="" >
+           </div>
+       </div> <br>
+       </td>
+       </tr> 
+    
+       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Changer</button>
+      </div>
+</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
    
     
   </main><!-- End #main -->

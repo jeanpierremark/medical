@@ -52,12 +52,12 @@
         </div>
     </div>
 </div>
-<!-- Button trigger modal -->
+<!-- Button trigger modal 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
 
-<!-- Modal -->
+Modal 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -74,7 +74,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

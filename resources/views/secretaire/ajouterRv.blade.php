@@ -68,14 +68,14 @@
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="bi bi-hospital text-light"></i></div>
                     <select name="domaine">
-								<option value="cardiologie">Cardiologie</option>
-								<option value="dermatologie">Dermatologie</option>
-								<option value="pediatrie">Pédiatrie</option>
-								<option value="neurologie">Neurologie</option>
-								<option value="nephrologie">Néphrologie</option>
-								<option value="gastro-enterologie">Gastro-Enterologie</option>
-								<option value="ophtalmologie">Ophtalmologie</option>
-								<option value="gynecologie">Gynécologie</option>
+								<option value="Cardiologie">Cardiologie</option>
+								<option value="Dermatologie">Dermatologie</option>
+								<option value="Pediatrie">Pédiatrie</option>
+								<option value="Neurologie">Neurologie</option>
+								<option value="Nephrologie">Néphrologie</option>
+								<option value="Gastro-enterologie">Gastro-Enterologie</option>
+								<option value="Ophtalmologie">Ophtalmologie</option>
+								<option value="Gynecologie">Gynécologie</option>
 							</select>
                 </div>
             </div> <br>

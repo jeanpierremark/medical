@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Orienter;
 use App\Models\RendezVous;
 use App\Models\Consultation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MedecinController extends Controller
 {
@@ -128,6 +130,41 @@ class MedecinController extends Controller
         $rv->statut=$request->statut;
         $rv->save();
         return $this->listeRendezVous();
+    }
+
+    public function modifmot(Request $request){
+        $b=0;
+        $mot='';
+        $anc=User::select('password')->whereid(Auth()->user()->id)->get();
+        foreach($anc as $a){
+            $b=$a->password;
+        }
+        
+       
+       if( is_null($request->apass)|| is_null($request->npass) || is_null($request->cpass)){
+        $var='Veuillez remplir les champs';
+       return view('medecin.dashboard',compact('var'));
+    }
+    else {
+        //$mot= Hash::make($request->apass);
+
+        if((Hash::check($request->cpass,$b))){
+            $var='Ancien mot de passe incorrecte';
+            return view('medecin.dashboard',compact('var'));
+        }
+        else{
+            if($request->npass==$request->cpass){
+                $uti=User::find(Auth()->user()->id);
+                $uti->password=Hash::make($request->npass);
+                $uti->save();
+                return $this->index();
+            }
+            else{
+                $var='Confirmation de mot de passe incorrecte';
+            return view('medecin.dashboard',compact('var'));
+            }
+        }
+    }
     }
 
 }

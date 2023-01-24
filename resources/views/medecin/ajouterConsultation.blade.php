@@ -84,7 +84,7 @@
                 <td>
             <div class="col-3">
                 <div class="input-group " style="width:400px">
-                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <div class="input-group-text bg-primary" ><i class="fas fa text-light"></i></div>
                     <input type="text" class="form-control" name="modeDevie" placeholder="Mode de vie" 
                     value=" <?php
                     if(isset($_POST['modeDevie']))

@@ -50,11 +50,12 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('listeConsultation', [MedecinController::class, 'listeConsultation'])->name('medecin.listeconsult');
     route::get('ajouterConsultation{id}', [MedecinController::class, 'getconsultation'])->name('medecin.addconsultation');
     route::post('ajoutconsultation{id}', [MedecinController::class, 'ajouterCons'])->name('medecin.addcons');
-    Route::get('modifierStatut', [MedecinController::class, 'changerstatut'])->name('medecin.statut');
+    Route::post('modifierPasse', [MedecinController::class, 'modifmot'])->name('medecin.passe');
 });
 
     Route::group(['prefix' => 'secretaire', 'middleware' =>['isSecretaire','auth']], function () {
                  Route::get('dashboard', [SecretaireController::class, 'index'])->name('secretaire.dashboard');
+                 Route::post('changerPasse', [SecretaireController::class, 'modifmot'])->name('secretaire.passe');
                  Route::post('ajouterPatient',[SecretaireController::class,'ajoutPatient'])->name('patient');
                  Route::get('ajouterPatient', [SecretaireController::class, 'ajouter'])->name('secretaire.ajouterPatient');
                  Route::get('listerPatient', [SecretaireController::class, 'lister'])->name('secretaire.listerPatient');

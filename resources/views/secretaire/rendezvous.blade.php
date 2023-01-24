@@ -10,6 +10,7 @@
 
 		<form method="POST" action="{{route('secretaire.updateRV',$rendezvous->id)}}"  style=" margin-top:200px">
         @csrf
+        <tbody>
     <div class="card-body">
             
             <tr>

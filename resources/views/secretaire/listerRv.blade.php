@@ -16,16 +16,19 @@
                             <th scope="col">Patient</th>
                             <th scope="col">Date</th>
                             <th scope="col">Libellé</th>
+                            <th scope="col">Service Santé</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                         @foreach ($rdvs as $r)
+                        @foreach ($patients as $or)
+                            @if($r->patient_id == $or->patient_id)
                                 <tr>
                                     <td>{{$r->patient->prenom}} {{$r->patient->nom}}</td>
                                     <td>{{$r->date}}</td>
                                     <td>{{$r->libelle}}</td>
-                                    
+                                    <td>{{$or->domaine}}</td>
                                     <td>
                                        
                                         <a href="{{route('secretaire.editRV',$r->id)}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
@@ -34,8 +37,9 @@
                                         
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
-                           
+                            @endforeach
                         </tbody>
                       </table>
                     
