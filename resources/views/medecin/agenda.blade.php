@@ -2,7 +2,7 @@
 
 @section('content')
  <div class="pagetitle">
-       <h1 style="font-size: 40px;" ><span class="fas fa-fw fa-calendar-alt "></span> Gérer les Rendez-Vous </h1>
+       <h1 style="font-size: 40px; " class="text-primary" ><span class="fas fa-fw fa-calendar-alt "></span> Gérer les Rendez-Vous </h1>
                         
       <br><br><br>
 
@@ -16,10 +16,10 @@
                                     <div class="row no-gutters align-items-center justify-content-between">
                                         <div class="col mr-2">
                                         
-                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold " href="">Liste RV</a>
+                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold " href="{{route('medecin.listeRv')}}">Liste RV</a>
                                         </div>
                                         <div class="col-auto">
-                                            <a href=""><i class="fas fa-list fa-3x" style=" color: darkblue;"></i></a>
+                                            <a href="{{route('medecin.listeRv')}}"><i class="fas fa-list fa-3x" style=" color: darkblue;"></i></a>
                                         </div>
                                     </div>
                                 </div>

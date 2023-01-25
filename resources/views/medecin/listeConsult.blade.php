@@ -1,6 +1,6 @@
 @extends('medecin.accueil')
 @section('content')
-<h1 style="color:darkblue"><span class="bi bi-file-text-fill">&nbsp;</span>Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
+<h1 style="color:darkblue" class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span>Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12">

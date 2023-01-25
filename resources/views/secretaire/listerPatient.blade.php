@@ -1,11 +1,11 @@
 @extends('secretaire.accueil')
 @section('content')
-<h1 style="color:darkblue"><span class="fa fa-user">&nbsp;</span>Patients <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
+<h1 style="color:darkblue" class="text-primary"><span class="fa fa-user">&nbsp;</span>Patients <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header justify-content-between" style="border-top:4px solid #074b99">
+                <div class="card-header justify-content-between  text-primary" style="border-top:4px solid #074b99">
                     <h3>Liste des patients <span style="padding-left: 680px;"><a class="btn btn-success fa fa-user-plus"  href="{{route('secretaire.ajouterPatient')}}">&nbsp;Ajouter un patient</a></span></h3>
                     
                 </div> 

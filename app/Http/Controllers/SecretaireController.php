@@ -209,11 +209,21 @@ class SecretaireController extends Controller
 
     public function updateRV(Request $request)
     {
-        $rv = RendezVous::find($request->id);
-        $rv->libelle = $request->libelle;
-        $rv->date = $request->date;
-        $rv->save();
-        return $this->listerendezVous();
+        if(!is_null($request->libelle) && !is_null( $request->date) && substr(substr( $request->date,0,7),5,7)>=date('m') && substr(substr( $request->date,0,10),8,9)<=31 && substr(substr( $request->date,0,10),8,9)>date('d')){
+            $rv = RendezVous::find($request->id);
+            $rv->libelle = $request->libelle;
+            $rv->date = $request->date;
+            $rv->save();
+            return $this->listerendezVous();
+        }
+        else{
+            $rendezvous = RendezVous::find($request->id);
+            $rdvs= RendezVous::with('patient')->whereId($request->id)->get();
+            $patient= Patient::with('rendezvous')->get();
+            $var='Informations non conformes';
+            return view('secretaire.rendezvous',compact('rendezvous','rdvs','patient','var'));
+        }
+        
     }
    
     public function supprimerRv($id){

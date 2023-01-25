@@ -1,4 +1,4 @@
-@extends('secretaire.accueil')
+@extends('medecin.accueil')
 @section('content')
 <h1 style="color:darkblue" class="text-primary"><span class="fa fa-user  text-primary">&nbsp;</span>Patient <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">@foreach($rdvs as $r) {{$r->patient->prenom}} {{$r->patient->nom}} @endforeach</span></h1>
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid #0c0476; ">
@@ -8,13 +8,12 @@
 				
                 <div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>
             
-@endif
-</center>
+@endif</center>
 	<br>
 	<table>
 
 
-		<form method="POST" action="{{route('secretaire.updateRV',$rendezvous->id)}}"  style=" margin-top:200px">
+		<form method="POST" action="{{route('medecin.updateRv',$rendezvous->id)}}"  style=" margin-top:200px">
         @csrf
         <tbody>
     <div class="card-body">
@@ -83,7 +82,7 @@
                 
                     <td>
 						<div class=" form-group">
-							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman" href="{{route('secretaire.listerendezVous')}}"> &nbsp;Retour</a>
+							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman" href=""> &nbsp;Retour</a>
 
 						</div>
 					</td>

@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h1 style="color:darkblue"><span class="fa fa-calendar-alt">&nbsp;</span>Agenda <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Rendez-vous</span></h1>
+<h1 style="color:darkblue" class="text-primary"><span class="fa fa-calendar-alt">&nbsp;</span>Agenda <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Rendez-vous</span></h1>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -32,9 +32,9 @@
                                     
                                         <td>
                                        
-                                            <a href="" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
-                                            <a href="" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
-                                            <a href="{{route('medecin.statut',$r->id)}}" class="btn btn-secondary" ><span class="bi bi-archive-fill"></span></a>
+                                            <a href="{{route('medecin.editRv',$r->id)}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
+                                            <a href="{{route('medecin.supprimerRv',$r->id)}}" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
+                                           
 
                                         
                                         </td>

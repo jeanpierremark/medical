@@ -71,10 +71,10 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
-            <a class="dropdown-item" href="{{ route('logout') }}"
+            <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Déconnexion') }}
+                                       <span class="fa fa-minus-circle">  {{ __('Déconnexion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -82,9 +82,9 @@
                                     </form>
             </li>
             <li>
-            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href=""
+            <a class="dropdown-item text-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" href=""
                                        >
-                                       Modifier mot de passe
+                                       <span class="fa fa-edit">  Modifier mot de passe
                                     </a>
 
                                     

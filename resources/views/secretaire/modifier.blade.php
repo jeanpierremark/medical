@@ -1,6 +1,6 @@
 @extends('secretaire.accueil')
 @section('content')
-<h1 style="color:darkblue"><span class="fa fa-user">&nbsp;</span>Patient <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Modifier</span></h1>
+<h1 style="color:darkblue" class="text-primary"><span class="fa fa-user  text-primary">&nbsp;</span>Patient <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Modifier</span></h1>
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid #0c0476; ">
 	<br>
 	<center> <caption ><span class="bi bi-pencil-square" style="font-size:25px"> &nbsp; Modifier Patient</span> </caption></center>

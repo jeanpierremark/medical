@@ -46,10 +46,11 @@
         </style>
     </head>
     <body style="background-image:url('img/accueil.jpg');background-size:100%">
-    <div class="container " style="margin-top:200px">
+    <div class="container    bg-secondary bg-opacity-25" style="margin-top:200px;width: 700px; height: 360px;">
     @if(isset($error))
    <center> <div class="text-danger">{{$error}}</div></center>
    @endif
+   <br>
     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -108,6 +109,7 @@
                             </div>
                         </div>
                     </form>
+                    <br>
 </div>
     </body>
 </html>

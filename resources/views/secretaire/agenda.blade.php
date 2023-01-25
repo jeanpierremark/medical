@@ -2,7 +2,7 @@
 
 @section('content')
  <div class="pagetitle">
-       <h1 style="font-size: 40px;" ><span class="fas fa-fw fa-calendar-alt "></span> Gérer les Rendez-Vous </h1>
+       <h1 style="font-size: 40px;" class="text-primary"><span class="fas fa-fw fa-calendar-alt "></span> Gérer les Rendez-Vous </h1>
                         
       <br><br><br>
 

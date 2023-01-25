@@ -1,8 +1,8 @@
 @extends('secretaire.accueil')
 @section('content')
-        <div class="container">
+        <div class="container ">
             <p>
-            <h1 style="color:darkblue"><span class="fa fa-calendar-alt">&nbsp;</span>Agenda <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Rendez-vous</span></h1>
+            <h1 style="color:darkblue" class="text-primary"><span class="fa fa-calendar-alt">&nbsp;</span>Agenda <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Rendez-vous</span></h1>
             </p>
             <div class="panel panel-primary">
                 <div class="panel-heading text-center bg-warning" style="color:white;margin-bottom:5px">
