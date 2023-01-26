@@ -8,7 +8,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
-                    <h3>Liste des rendez-vous<span style="padding-left: 660px;"><a class="btn btn-warning fa fa-calendar-alt"  href="{{route('medecin.getevent')}}">&nbsp;Voir Calendrier</a></span></h3>
+                    <h3>Liste des rendez-vous<span style="padding-left: 600px;"><a href="{{route('medecin.getevent')}}" class="btn btn-warning btn-icon-split">
+                                        <span class="icon text-gray-600">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                        <span class="text">Voir le calendrier </span>
+                                    </a></span></h3>
                 </div>
                     <div class="card-body">
                    
@@ -45,36 +50,16 @@
                         @endforeach
                         </tbody>
                       </table>
+                      
                     
             </div>
         </div>
     </div>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-@endsection
-
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+
+@endsection
+

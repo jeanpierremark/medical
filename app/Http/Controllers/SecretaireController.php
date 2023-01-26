@@ -245,25 +245,25 @@ class SecretaireController extends Controller
        
        if( is_null($request->apass)|| is_null($request->npass) || is_null($request->cpass)){
         $var='Veuillez remplir les champs';
-       return view('medecin.dashboard',compact('var'));
+       return view('secretaire.dashboard',compact('var'));
     }
     else {
         //$mot= Hash::make($request->apass);
 
         if((Hash::check($request->cpass,$b))){
             $var='Ancien mot de passe incorrecte';
-            return view('medecin.dashboard',compact('var'));
+            return view('secretaire.dashboard',compact('var'));
         }
         else{
             if($request->npass==$request->cpass){
                 $uti=User::find(Auth()->user()->id);
                 $uti->password=Hash::make($request->npass);
                 $uti->save();
-                return $this->index();
+                return redirect('/');
             }
             else{
                 $var='Confirmation de mot de passe incorrecte';
-            return view('medecin.dashboard',compact('var'));
+            return view('secretaire.dashboard',compact('var'));
             }
         }
     }

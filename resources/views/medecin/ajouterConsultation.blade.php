@@ -1,6 +1,6 @@
 @extends('medecin.dashboard')
 @section('content')
-<h1 style="color:darkblue"><span class="bi bi-file-text-fill">&nbsp;</span> Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span></h1>
+<h1 style="color:darkblue"  class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span> Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span></h1>
 
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid darkblue; ">
 	<br>
@@ -184,7 +184,7 @@
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>
 						<div class=" form-group">
-							<input  class="fa fa-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="ajouter" value=" Ajouter">
+                        <button type="submit" class="btn btn-primary  ">&nbsp;Changer</button>
 
 						</div>
 					</td>

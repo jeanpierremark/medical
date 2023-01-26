@@ -82,7 +82,7 @@
                 
                     <td>
 						<div class=" form-group">
-							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman" href=""> &nbsp;Retour</a>
+							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman" href="{{route('medecin.listeRv')}}"> &nbsp;Retour</a>
 
 						</div>
 					</td>

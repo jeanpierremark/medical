@@ -46,9 +46,14 @@
         </style>
     </head>
     <body style="background-image:url('img/accueil.jpg');background-size:100%">
-    <div class="container" style="margin-top:200px">
+    <div class="container    bg-secondary bg-opacity-25" style="margin-top:200px;width: 700px; height: 360px;">
+    @if(isset($error))
+   <center> <div class="text-danger">{{$error}}</div></center>
+   @endif
+   <br><br><br>
     <form method="POST" action="{{ route('login') }}">
                         @csrf
+
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end " > <span class="fa fa-user fa-2x text-primary"></span></label>
@@ -104,6 +109,7 @@
                             </div>
                         </div>
                     </form>
+                    <br>
 </div>
     </body>
 </html>

@@ -6,7 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
-                    <h3>Liste des rendez-vous<span style="padding-left: 660px;"><a class="btn btn-warning fa fa-calendar-alt"  href="{{route('getevent')}}">&nbsp;Voir Calendrier</a></span></h3>
+                    <h3>Liste des rendez-vous<span style="padding-left: 600px;"><a href="{{route('getevent')}}" class="btn btn-warning btn-icon-split">
+                                        <span class="icon text-gray-600">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                        <span class="text">Voir le calendrier </span>
+                                    </a></span></h3>
                 </div>
                     <div class="card-body">
                    

@@ -50,7 +50,7 @@
     @if(isset($error))
    <center> <div class="text-danger">{{$error}}</div></center>
    @endif
-   <br>
+   <br><br><br>
     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

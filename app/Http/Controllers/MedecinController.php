@@ -157,7 +157,7 @@ class MedecinController extends Controller
                 $uti=User::find(Auth()->user()->id);
                 $uti->password=Hash::make($request->npass);
                 $uti->save();
-                return $this->index();
+                return redirect('/');
             }
             else{
                 $var='Confirmation de mot de passe incorrecte';
@@ -189,7 +189,7 @@ class MedecinController extends Controller
             $rdvs= RendezVous::with('patient')->whereId($request->id)->get();
             $patient= Patient::with('rendezvous')->get();
             $var='Informations non conformes';
-            return view('secretaire.rendezvous',compact('rendezvous','rdvs','patient','var'));
+            return view('medecin.modifRv',compact('rendezvous','rdvs','patient','var'));
         }
     }
     public function supprimerRv($id){
