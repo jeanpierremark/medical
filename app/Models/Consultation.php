@@ -9,7 +9,7 @@ class Consultation extends Model
 {
     use HasFactory;
     protected $fillable = array('motifConsultation','dateConsultation','modeDeVie','decision','histoireMaladie','maladie','alergie',
-                                'handicap','operation');
+                                'handicap','operation','modeAdmission');
    protected $rules = array('motif'=>'required|min:10','modevie'=>'required|min:10','decision'=>'required|min:10');
 
    public function traitementencours(){
@@ -26,4 +26,7 @@ class Consultation extends Model
     public function medecin(){
        return $this->belongsTo(Medecin::class);
    }
+   public function evolution(){
+    return $this->hasMany(Evolution::class);
+}
 }

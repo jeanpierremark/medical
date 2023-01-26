@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('medecins')->onDelete("cascade");
             $table->string('motifConsultation');
+            $table->string('modeAdmission');
             $table->date('dateConsultation');
             $table->string('modeDevie');
             $table->string('decision');

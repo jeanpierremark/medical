@@ -43,7 +43,7 @@
 
 <body>
   <!-- ======= Header ======= -->
-  <header id="header" style="background-color:aliceblue;" class="header  fixed-top d-flex align-items-center ">
+  <header id="header" style="background-color:aliceblue;height: 40px" class="header  fixed-top d-flex align-items-center ">
 
     <div class="d-flex align-items-center justify-content-between">
       <div href="" class="logo d-flex align-items-center">
@@ -94,7 +94,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside  class="sidebar " style="background-image: url('../img/med2.jpg'); margin-top: 20px ;" >
+  <aside  class="sidebar " style="background-image: url('../img/med2.jpg'); margin-top: 0px ;" >
    
 
     <ul class="sidebar-nav" id="sidebar-nav">

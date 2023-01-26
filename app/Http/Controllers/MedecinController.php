@@ -5,9 +5,12 @@ use App\Models\User;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Orienter;
+use App\Models\Evolution;
 use App\Models\RendezVous;
 use App\Models\Consultation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\ExamenComplementaire;
 use Illuminate\Support\Facades\Hash;
 
 class MedecinController extends Controller
@@ -93,17 +96,25 @@ class MedecinController extends Controller
 
     public function ajouterCons(Request $request){
         $idmed=0;
+        $mt='';
+        $motif=Consultation::select('motifConsultation')->wherepatientId($request->id)->get();
         $med= Medecin::select('id')->whereuserId(Auth()->user()->id)->get();
+        $rdv= DB::table('rendez_vouses')->wherepatientId($request->id)->max('id');
+        $rdvs=RendezVous::find($rdv);
         foreach($med as $m){
             $idmed=$m->id;
         }
+        foreach($motif as $mo){
+            $mt=$m->motifConsultation;
+        }
+        
         $consult= new Consultation();
         if(is_null($request->motifConsultation) || is_null($request->alergie)  || is_null($request->histoireMaladie) || is_null($request->maladie) || is_null($request->modeDevie) || is_null($request->handicap) || is_null($request->decision) || is_null($request->operation) || is_null($request->dateConsultation)){
             $id=$request->id;
             $var='Veuillez remplir tous les champs';
              return  view('medecin.ajouterConsultation' , compact('id','var'));
             }
-            else if($idmed !=0){
+            else if($idmed !=0 && $mt!=$request->motifConsultation){
                     $consult->motifConsultation=$request->motifConsultation;
                     $consult->histoireMaladie=$request->histoireMaladie;
                     $consult->maladie=$request->maladie;
@@ -115,13 +126,28 @@ class MedecinController extends Controller
                     $consult->patient_id=$request->id;
                     $consult->medecin_id=$idmed;
                     $consult->alergie=$request->alergie;
-                    $consult->save();
-              
-               
+                    $ress=$consult->save();
+                if($ress==1){
+                    $rdvs->statut="effectif";
+                    $rdvs->save();
+                }
+                return $this->listeConsultation();
+
+            }
+            else if($mt==$request->motifConsultation){
+                $id=$request->id;
+                $var='Ce motif de consultation est déjà enregisté pour ce patient veuillez consulter son dossier!';
+                return  view('medecin.ajouterConsultation' , compact('id','var'));
+
+            }
+            else{
+                $id=$request->id;
+                $var='Veuillez remplir tous les champs';
+                return  view('medecin.ajouterConsultation' , compact('id','var'));
 
             }
             
-            return $this->listeConsultation();
+            
 
     }
 
@@ -199,4 +225,18 @@ class MedecinController extends Controller
         }
         return $this->listerendezVous();
     }
+    public function deleteCons($id){
+        $cons=Consultation::find($id);
+        if($id!=null){
+            $cons->delete();
+            return $this->listeConsultation();
+        }
+    }
+    public function detailCons($id){
+        $cons=Consultation::with('patient')->whereId($id)->get();
+        $exam=ExamenComplementaire::whereconsultationId($id)->get();
+        $evo=Evolution::whereconsultationId($id)->get();
+        return view('medecin.detailCons',compact('cons','exam','evo')); 
+    }
+    
 }
