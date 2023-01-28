@@ -44,6 +44,8 @@ class MedecinController extends Controller
     }
     public function ajouteRV(Request $request)
     {
+        $rdv= DB::table('rendez_vouses')->wherepatientId($request->id)->max('id');
+        $rdvs=RendezVous::find($rdv);
         $idmed=0;
         $med = Medecin::select('id')->whereuserId(Auth()->user()->id)->get();
         foreach($med as $m){
@@ -55,16 +57,28 @@ class MedecinController extends Controller
        $var='Veuillez remplir tous les champs';
         return  view('medecin.ajouterRv' , compact('id','var'));
        }
-       else{
-        $rendezvous->date=$request->date;
-        $rendezvous->libelle=$request->libelle;
-        $rendezvous->patient_id=$request->id;
-       }
-       if($idmed != 0){
-        $rendezvous->medecin_id=$idmed;
-       }
-       $rendezvous->save();
-       return $this->listeRendezVous();
+       else {
+       
+            if(substr( $request->date,0,4)<date('Y') || substr(substr( $request->date,0,7),5,7)<date('m')|| substr(substr( $request->date,0,7),5,7)>12 || substr(substr( $request->date,0,10),8,9)>31 || substr(substr( $request->date,0,10),8,9)<date('d')){
+                $id=$request->id;
+                $var='La date  est incorrete';
+                return  view('medecin.ajouterRv' , compact('id','var'));
+            }
+            else{
+                $rendezvous->date=$request->date;
+                $rendezvous->libelle=$request->libelle;
+                $rendezvous->patient_id=$request->id;
+                $rendezvous->medecin_id=$idmed;
+                $rendezvous->save();
+                if( $rendezvous->save()==1){
+                    $rdvs->statut="effectif";
+                    $rdvs->save();
+                }
+            }
+    
+       
+            return $this->listeRendezVous();
+        }
     }
     public function listeRendezVous(){
         $spe='';
@@ -105,7 +119,7 @@ class MedecinController extends Controller
             $idmed=$m->id;
         }
         foreach($motif as $mo){
-            $mt=$m->motifConsultation;
+            $mt=$mo->motifConsultation;
         }
         
         $consult= new Consultation();
@@ -151,12 +165,7 @@ class MedecinController extends Controller
 
     }
 
-    public function changerstatut(Request $request){
-        $rv=RendezVous::find($request->id);
-        $rv->statut=$request->statut;
-        $rv->save();
-        return $this->listeRendezVous();
-    }
+   
 
     public function modifmot(Request $request){
         $b=0;
@@ -203,6 +212,7 @@ class MedecinController extends Controller
 
     public function updateRV(Request $request)
     {
+        
         if(!is_null($request->libelle) && !is_null( $request->date) && substr(substr( $request->date,0,7),5,7)>=date('m') && substr(substr( $request->date,0,10),8,9)<=31 && substr(substr( $request->date,0,10),8,9)>date('d')){
             $rv = RendezVous::find($request->id);
             $rv->libelle = $request->libelle;
@@ -227,16 +237,97 @@ class MedecinController extends Controller
     }
     public function deleteCons($id){
         $cons=Consultation::find($id);
-        if($id!=null){
+        if($cons!=null){
             $cons->delete();
             return $this->listeConsultation();
         }
     }
     public function detailCons($id){
+        $p=0;
+        $te=time();
+        $d=date('d/m/Y', $te);
         $cons=Consultation::with('patient')->whereId($id)->get();
         $exam=ExamenComplementaire::whereconsultationId($id)->get();
         $evo=Evolution::whereconsultationId($id)->get();
-        return view('medecin.detailCons',compact('cons','exam','evo')); 
+        foreach($cons as $c){
+            $p=$c->patient->id;
+
+        }
+        
+        return view('medecin.detailCons',compact('cons','exam','evo','id','p','d')); 
     }
-    
+    public function addEvolution(Request $request){
+        $rdv= DB::table('rendez_vouses')->wherepatientId($request->patient)->max('id');
+        $rdvs=RendezVous::find($rdv);
+        $evo=new Evolution();
+        $res=0;
+        if(!is_null($request->description) && !is_null($request->date)){
+            $evo->description=$request->description;
+            $evo->date=$request->date;
+            $evo->consultation_id=$request->id;
+            $res=$evo->save();
+            if($res==1){
+                $rdvs->statut="effectif";
+                $rdvs->save();
+            }
+            return $this->detailCons($request->id);
+        }
+        else{
+            return $this->detailCons($request->id);
+        }
+
+    }
+    public function addExamen(Request $request){
+        $exam=new ExamenComplementaire();
+        if(!is_null($request->contenu) && !is_null($request->dateExamen)){
+            $exam->contenu=$request->contenu;
+            $exam->dateExamen=$request->dateExamen;
+            $exam->consultation_id=$request->id;
+          
+            $exam->save();
+
+            return $this->detailCons($request->id);
+        }
+        else{
+            return $this->detailCons($request->id);
+        }
+
+
+    }
+    public function modifCons($id){
+        $consult=Consultation::find($id);
+        $cons=Consultation::with('patient')->whereId($id)->get();
+        return view('medecin.modifCons',compact('consult','cons'));
+    }
+    public function updateCons(Request $request){
+        $idmed=0;
+        $med= Medecin::select('id')->whereuserId(Auth()->user()->id)->get();
+        foreach($med as $m){
+            $idmed=$m->id;
+        }
+        $consult=Consultation::find($request->id);
+        if(is_null($request->motifConsultation) || is_null($request->alergie)  || is_null($request->histoireMaladie) || is_null($request->maladie) || is_null($request->modeDevie) || is_null($request->handicap) || is_null($request->decision) || is_null($request->operation) || is_null($request->dateConsultation)){
+            $consult=Consultation::find($request->id);
+            $var='Veuillez remplir tous les champs';
+            $cons=Consultation::with('patient')->whereId($request->id)->get();
+             return  view('medecin.modifCons' , compact('consult','var','cons'));
+            }
+            else{
+                    $consult->motifConsultation=$request->motifConsultation;
+                    $consult->histoireMaladie=$request->histoireMaladie;
+                    $consult->maladie=$request->maladie;
+                    $consult->modeDevie=$request->modeDevie;
+                    $consult->handicap=$request->handicap;
+                    $consult->decision=$request->decision;
+                    $consult->operation=$request->operation;
+                    $consult->dateConsultation=$request->dateConsultation;
+                    $consult->patient_id=$request->id;
+                    $consult->medecin_id=$idmed;
+                    $consult->alergie=$request->alergie;
+                    $ress=$consult->save();
+                
+                return $this->listeConsultation();
+            }
+            
+    }
 }

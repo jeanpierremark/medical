@@ -8,7 +8,7 @@
                 <div class="panel-heading text-center bg-warning" style="color:white;margin-bottom:5px">
                  <h1> <span class="fa fa-calendar-alt"></span> Agenda des rendez-vous</h1>
                 </div>
-                <div class="panel-body   style="background-color:white">
+                <div class="panel-body"   style="background-color:white">
                     <div id='calendar'></div>
                 </div>
             </div>

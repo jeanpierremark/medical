@@ -36,8 +36,8 @@ class SecretaireController extends Controller
     public function getrendezVous($id)
     {
         $medecin=User::with('medecin')->whererole('medecin')->get();
-      
-        return view('secretaire.ajouterRv',compact('id','medecin'));
+        $mede=Medecin::with('user')->get();
+        return view('secretaire.ajouterRv',compact('id','medecin','mede'));
     }
 
     public function getagenda()
@@ -54,12 +54,33 @@ class SecretaireController extends Controller
         $mede=array();
         $oriente= new Orienter();
         $rendezvous = new RendezVous();
+
+        $d=0;
+        $pa=0;
+        $por=Orienter::wherepatientId($request->id)->get();
+        foreach($por as $p){
+            $d=$p->domaine;
+            $pa=$p->patient_id;
+        }
+        
+
+
+
        if(is_null($request->date) || is_null($request->medecin) || is_null($request->domaine) || is_null($request->libelle)){
        $id=$request->id;
        $var='Veuillez remplir tous les champs';
        $medecin=User::with('medecin')->whererole('medecin')->get();
-        return  view('secretaire.ajouterRv' , compact('id','var','medecin'));
+       $mede=Medecin::with('user')->get();
+        return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
        }
+
+       else if($d== $request->domaine && $pa==$request->id){
+            $id=$request->id;
+            $var='Le patient a déjà été orienté à ce service ';
+            $medecin=User::with('medecin')->whererole('medecin')->get();
+            $mede=Medecin::with('user')->get();
+            return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
+        }
        else{
        
         $medecin=User::select('id')->whereemail($request->medecin)->get();
@@ -86,14 +107,16 @@ class SecretaireController extends Controller
                 $id=$request->id;
                 $var='La date  est incorrete';
                 $medecin=User::with('medecin')->whererole('medecin')->get();
-                 return  view('secretaire.ajouterRv' , compact('id','var','medecin'));
+                $mede=Medecin::with('user')->get();
+                 return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
             }
         
             else if($specia != $request->domaine ){
                 $id=$request->id;
                 $var='Veuillez choisir un medecin du même service';
                 $medecin=User::with('medecin')->whererole('medecin')->get();
-                 return  view('secretaire.ajouterRv' , compact('id','var','medecin'));
+                $mede=Medecin::with('user')->get();
+                 return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
                 
                 } 
             else {
@@ -103,28 +126,14 @@ class SecretaireController extends Controller
             }
         }
         $a=0;
-        if($result==1 && $send>0){
-            $d=0;
-            $pa=0;
-            $por=Orienter::wherepatientId($request->id)->get();
-            foreach($por as $p){
-                $d=$p->domaine;
-                $pa=$p->patient_id;
-            }
-            
-            if($d== $request->domaine && $pa==$request->id){
-                $id=$request->id;
-                $var='Le patient à déjà été orienté à ce service ';
-                $medecin=User::with('medecin')->whererole('medecin')->get();
-                 return  view('secretaire.ajouterRv' , compact('id','var','medecin'));
-            }
-            else{
+        if($result==1 ){
+           
                 $oriente->patient_id=$request->id;
                 $oriente->domaine= $request->domaine;
                 $oriente->secretaire_id= $send;
                
                 $a=$oriente->save();
-            }
+            
         }
         
        

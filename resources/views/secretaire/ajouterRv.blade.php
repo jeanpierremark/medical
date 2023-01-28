@@ -96,8 +96,12 @@
                     <div class="input-group-text bg-primary"><i class="fa fa-user text-light"></i></div>
                     <select name="medecin">
                             @foreach($medecin as $med)
-								<option value="{{$med->email}}">{{$med->prenom}} {{$med->nom}}  </option>
-							@endforeach	
+                                @foreach($mede as $cin)
+                                    @if($med->id == $cin->user_id)
+								        <option value="{{$med->email}}">Doc {{$med->prenom}} {{$med->nom}} / {{$cin->specialite}}  </option>
+                                    @endif
+							    @endforeach	
+                            @endforeach	
 							</select>
                 </div>
             </div> <br>

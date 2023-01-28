@@ -51,8 +51,12 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('ajouterConsultation{id}', [MedecinController::class, 'getconsultation'])->name('medecin.addconsultation');
     route::post('ajoutconsultation{id}', [MedecinController::class, 'ajouterCons'])->name('medecin.addcons');
     Route::post('modifierPasse', [MedecinController::class, 'modifmot'])->name('medecin.passe');
+    Route::post('ajouterExamen', [MedecinController::class, 'addExamen'])->name('medecin.exam');
+    Route::post('ajouterEvolution', [MedecinController::class, 'addEvolution'])->name('medecin.evolution');
     Route::get('editerRv{id}', [MedecinController::class, 'modifierRV'])->name('medecin.editRv');
     Route::post('updateRv{id}', [MedecinController::class, 'updateRV'])->name('medecin.updateRv');
+    Route::get('consultaEdit{id}', [MedecinController::class, 'modifCons'])->name('medecin.modifCons');
+    Route::post('consultaUpdate{id}', [MedecinController::class, 'updateCons'])->name('medecin.updateCons');
     Route::get('supprimerConsultation{id}', [MedecinController::class, 'deleteCons'])->name('medecin.supcons');
     Route::get('detailConsultation{id}', [MedecinController::class, 'detailCons'])->name('medecin.detailCons');
     route::get('supprimerRendezVous{id}', [MedecinController::class, 'supprimerRv'])->name('medecin.supprimerRv');
