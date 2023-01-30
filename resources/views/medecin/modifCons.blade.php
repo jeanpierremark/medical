@@ -149,7 +149,7 @@
             </tr> 
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Alergie</td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Allergie</td>
                
                 <td>
             <div class="col-3">
@@ -159,6 +159,22 @@
                   
                 </div>
             </div> <br>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Mode d'Admission</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class="form-control" name="handicap"  placeholder="modeAdmission" value="{{$consult->modeAdmission}}">
+                   
+                </div>
+            </div><br>
             </td>
 			</tr>
             <tr>

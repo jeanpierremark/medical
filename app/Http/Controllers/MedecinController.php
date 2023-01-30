@@ -7,8 +7,10 @@ use App\Models\Patient;
 use App\Models\Orienter;
 use App\Models\Evolution;
 use App\Models\RendezVous;
+use App\Models\Traitement;
 use App\Models\Consultation;
 use Illuminate\Http\Request;
+use App\Models\Hospitalisation;
 use Illuminate\Support\Facades\DB;
 use App\Models\ExamenComplementaire;
 use Illuminate\Support\Facades\Hash;
@@ -123,7 +125,7 @@ class MedecinController extends Controller
         }
         
         $consult= new Consultation();
-        if(is_null($request->motifConsultation) || is_null($request->alergie)  || is_null($request->histoireMaladie) || is_null($request->maladie) || is_null($request->modeDevie) || is_null($request->handicap) || is_null($request->decision) || is_null($request->operation) || is_null($request->dateConsultation)){
+        if(is_null($request->motifConsultation) || is_null($request->modeAdmission)  || is_null($request->alergie)  || is_null($request->histoireMaladie) || is_null($request->maladie) || is_null($request->modeDevie) || is_null($request->handicap) || is_null($request->decision) || is_null($request->operation) || is_null($request->dateConsultation)){
             $id=$request->id;
             $var='Veuillez remplir tous les champs';
              return  view('medecin.ajouterConsultation' , compact('id','var'));
@@ -137,6 +139,7 @@ class MedecinController extends Controller
                     $consult->decision=$request->decision;
                     $consult->operation=$request->operation;
                     $consult->dateConsultation=$request->dateConsultation;
+                    $consult->modeAdmission=$request->modeAdmission;
                     $consult->patient_id=$request->id;
                     $consult->medecin_id=$idmed;
                     $consult->alergie=$request->alergie;
@@ -144,6 +147,13 @@ class MedecinController extends Controller
                 if($ress==1){
                     $rdvs->statut="effectif";
                     $rdvs->save();
+                }
+                if(strtolower($request->decision)=='hospitalisation'){
+                    $hospi= new Hospitalisation();
+                    $hospi->dateEntree=$request->dateConsultation;
+                    $hospi->patient_id=$request->id;
+                    $hospi->medecin_id=$idmed;
+                    $hospi->save();
                 }
                 return $this->listeConsultation();
 
@@ -306,7 +316,7 @@ class MedecinController extends Controller
             $idmed=$m->id;
         }
         $consult=Consultation::find($request->id);
-        if(is_null($request->motifConsultation) || is_null($request->alergie)  || is_null($request->histoireMaladie) || is_null($request->maladie) || is_null($request->modeDevie) || is_null($request->handicap) || is_null($request->decision) || is_null($request->operation) || is_null($request->dateConsultation)){
+        if(is_null($request->motifConsultation) || is_null($request->modeAdmission)  || is_null($request->alergie)  || is_null($request->histoireMaladie) || is_null($request->maladie) || is_null($request->modeDevie) || is_null($request->handicap) || is_null($request->decision) || is_null($request->operation) || is_null($request->dateConsultation)){
             $consult=Consultation::find($request->id);
             $var='Veuillez remplir tous les champs';
             $cons=Consultation::with('patient')->whereId($request->id)->get();
@@ -321,6 +331,7 @@ class MedecinController extends Controller
                     $consult->decision=$request->decision;
                     $consult->operation=$request->operation;
                     $consult->dateConsultation=$request->dateConsultation;
+                    $consult->modeAdmission=$request->modeAdmission;
                     $consult->patient_id=$request->id;
                     $consult->medecin_id=$idmed;
                     $consult->alergie=$request->alergie;
@@ -329,5 +340,18 @@ class MedecinController extends Controller
                 return $this->listeConsultation();
             }
             
+    }
+
+    public function dossier($id){
+        $patient=Patient::find($id);
+       // $traitement=Traitement::
+       $visite=RendezVous::wheremedecinId(Auth()->user()->id)->wherestatut('effectif')->wherepatientId($id)->get();
+       $cons=Consultation::wheremedecinId(Auth()->user()->id)->wherepatientId($id)->get();
+       $evolu=Evolution::all();
+       $examCons=Consultation::wherepatientId($id)->get();
+       $exam=ExamenComplementaire::all();
+       $medecin=Medecin::with('user')->get();
+       $hospi=Hospitalisation::wherepatientId($id)->get(); 
+        return view('medecin.dossier',compact('patient','visite','cons','examCons','exam','evolu','hospi','medecin'));
     }
 }

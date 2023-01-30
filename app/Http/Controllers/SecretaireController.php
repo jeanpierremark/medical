@@ -162,7 +162,7 @@ class SecretaireController extends Controller
     {
         $patient = Patient::find($request->id);
         $patient->prenom = $request->prenom;
-        $patient->nom = $request->nom;
+        $patient->nom =strtoupper($request->nom);
         $patient->telephone = $request->telephone;
         $patient->adresse = $request->adresse;
         $patient->profession = $request->profession;
@@ -189,7 +189,7 @@ class SecretaireController extends Controller
         else{
         $patient->idAn =date('y');
         $patient->prenom = $request->prenom;
-        $patient->nom = $request->nom;
+        $patient->nom = strtoupper($request->nom);
         $patient->telephone = $request->telephone;
         $patient->adresse = $request->adresse;
         $patient->profession = $request->profession;

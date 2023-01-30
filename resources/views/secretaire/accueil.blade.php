@@ -116,8 +116,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-users"></i>Agenda</a>
                 <div class="dropdown-menu  border-0">
-                    <a href="{{ route('secretaire.listerendezVous') }}" class="dropdown-item text-secondary">Liste rendez-vous</a>
-                    <a href="{{ route('getevent') }}" class="dropdown-item text-secondary">Calendrier</a>
+                    <a href="{{ route('secretaire.listerendezVous') }}" class="dropdown-item fa fa-list text-warning">&nbsp;Liste des rendez-vous</a>
+                    <a href="{{ route('getevent') }}" class="dropdown-item fa fa-calendar-alt text-danger">&nbsp;Calendrier</a>
                     
                     
                 </div>
@@ -136,8 +136,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-users"></i>Patients</a>
                 <div class="dropdown-menu  border-0">
-                    <a href="{{ route('secretaire.ajouterPatient') }}" class="dropdown-item text-secondary">Ajouter</a>
-                    <a href="{{ route('secretaire.listerPatient') }}" class="dropdown-item text-secondary">Lister</a>
+                    <a href="{{ route('secretaire.ajouterPatient') }}" class="dropdown-item fa fa-user-plus text-success">&nbsp;Ajouter un patient</a>
+                    <a href="{{ route('secretaire.listerPatient') }}" class="dropdown-item fa fa-list text-warning">&nbsp;Liste des Patients</a>
                     
                     
                 </div>

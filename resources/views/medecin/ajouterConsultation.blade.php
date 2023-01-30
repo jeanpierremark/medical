@@ -1,11 +1,22 @@
 @extends('medecin.dashboard')
 @section('content')
-<h1 style="color:darkblue"  class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span> Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span></h1>
+<h1 style="color:darkblue"  class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span> Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span>  <span style="margin-left:400px"><a href="" data-bs-toggle="modal" data-bs-target="#traitement" class="btn btn-warning btn-icon-split">
+                                        <span class="icon text-gray-600">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                        <span class="text"> Traitement </span>
+                                    </a></span> <span style=""><a href="" data-bs-toggle="modal" data-bs-target="#traitementcours" class="btn btn-primary btn-icon-split">
+                                        <span class="icon text-gray-600">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                        <span class="text"> Traitements En cours </span>
+                                    </a></span></h1>
 
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid darkblue; ">
 	<br>
-	<center> <caption ><span class="bi bi-file-text-fill" style="font-size:25px"> &nbsp; Ajouter Consultation</span> </caption>
-
+	<center> <caption ><span class="bi bi-file-text-fill" style="font-size:25px"> &nbsp; Ajouter Consultation</span>  </caption>
+     
+    
         
 		@if(isset($var))
 				
@@ -166,7 +177,7 @@
             </tr> 
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Alergie</td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Allergie</td>
                
                 <td>
             <div class="col-3">
@@ -179,6 +190,25 @@
                 </div>
             </div> <br>
             </td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Mode d'Admission</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                
+                
+                
+               
+                <td>
+            <div class="col-3">
+            <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class=" form-control" name="modeAdmission" placeholder="Mode d'Admission"   value=" <?php
+                    if(isset($_POST['modeAdmission']))
+                    echo $_POST['modeAdmission']
+                    ?>">
+                </div>
+            </div><br>
+            </td>
+
 			</tr>
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
@@ -211,21 +241,179 @@
 
 </div>
 
+<div class="modal fade" id="traitement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title bi bi-plus" id="exampleModalLabel">Traitement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      @if(isset($var))
+				
+        <div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>
+
+      @endif
+		<form method="POST" action="" >
+        @csrf
+            
+       
+    
+            <tr>
+          
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Libellé</td>
+                
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class="form-control" name="libelle"  value="">
+                </div>
+            </div><br>
+            </td>
+            </tr>
+			<tr>
+           
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Type</td>
+                
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class=" form-control" name="type" value="" >
+                </div>
+            </div> <br><br>
+            </td>
+            </tr> 
+            <tr><b> Ordonnance </b></tr> <br>
+            <tr>
+          
+          <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Date</td>
+          
+          
+          
+         
+          <td>
+      <div class="col-3">
+          <div class="input-group " style="width:400px">
+              <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+              <input type="Date" class="form-control" name="dateOrdonnance"  value="">
+          </div>
+      </div><br>
+      </td>
+      </tr>
+      <tr><b> Médicaments </b> <span id="medi" style="margin-left:50px" class="btn btn-primary bi bi-plus" ></span></tr> <br><br>
+      
+      <div class="col-3">
+          <div class="input-group " style="width:400px">
+              <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+              <input type="text" class="form-control" name="libelle"  value="" placeholder="libelle">
+          </div>
+      </div><br>
+ 
+      <div class="col-3">
+          <div class="input-group " style="width:400px">
+              <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+              <input type="text" class="form-control" name="quantite"  value="" placeholder="Quantité">
+          </div>
+      </div><br>
+ 
+    <div id="ajout"></div>
+       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<script>
+        let med=document.getElementById('medi');
+        let t=document.getElementById('ajout');
+        med.addEventListener('click',function(){
+            t.append(' < input type="text">');
+         
+             
+           
+          
+      
+
+   
+        });
+
+    </script>
+
+
+
+
+<div class="modal fade" id="traitementcours" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title bi bi-plus" id="exampleModalLabel">Traitement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      @if(isset($var))
+				
+        <div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>
+
+      @endif
+		<form method="POST" action="" >
+        @csrf
+            
+       
+    
+            <tr>
+          
+                <td  style="font-weight:bold;font-size:16px; font-family:times new roman" >Date</td>
+                
+                
+                
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group " style="width:400px">
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class="form-control" name="date" disabled="disabled" value="">
+                </div>
+            </div><br>
+            </td>
+            </tr>
+			<tr>
+           
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Description</td>
+                
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="text" class=" form-control" name="description" value="" >
+                </div>
+            </div> <br>
+            </td>
+            </tr> 
+     
+         
+    
+       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 @endsection
- <!--
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="service"><strong>Service Santé</strong></label>
-							<select name="domaine">
-								<option value="cardiologie">Cardiologie</option>
-								<option value="dermatologie">Dermatologie</option>
-								<option value="pediatrie">Pédiatrie</option>
-								<option value="neurologie">Neurologie</option>
-								<option value="nephrologie">Néphrologie</option>
-								<option value="gastro-enterologie">Gastro-Enterologie</option>
-								<option value="ophtalmologie">Ophtalmologie</option>
-								<option value="gynecologie">Gynécologie</option>
-							</select>
-						</div>
-					</td>
-                -->
+
+			

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hospitalisation extends Model
 {
     use HasFactory;
-    protected $fillable =array('dateEntree','dateSortie');
+    protected $fillable =array('dateEntree','dateSortie','medecin_id','patient_id');
 
 
      public function patient(){

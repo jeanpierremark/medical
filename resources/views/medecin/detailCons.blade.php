@@ -9,7 +9,7 @@
     
     <table >
         <tr >
-            <td >
+            <td style="padding-bottom:25px;">
                 <b> Patient</b>
             </td>
             
@@ -19,7 +19,7 @@
         </tr>
       
         <tr>
-            <td >
+            <td  style="padding-bottom:25px;">
                 <b>Mode d'admission</b>
             </td>
             
@@ -28,7 +28,7 @@
             </td>
         </tr>
         <tr>
-            <td >
+            <td  style="padding-bottom:25px;">
                 <b>Plaintes</b>
             </td>
             
@@ -37,7 +37,7 @@
             </td>
         </tr>
         <tr>
-            <td >
+            <td style="padding-bottom:25px;" >
                 <b>Maladie</b>
             </td>
             
@@ -46,7 +46,7 @@
             </td>
         </tr>
         <tr>
-            <td >
+            <td  style="padding-bottom:25px;">
                 <b>Décision</b>
             </td>
             
@@ -55,8 +55,8 @@
             </td>
         </tr>
         <tr>
-            <td >
-                <b>Les Alergies</b>
+            <td  style="padding-bottom:25px;">
+                <b>Les Allergies</b>
             </td>
             
             <td style="padding-left:200px;padding-bottom:25px;">
@@ -141,7 +141,7 @@
             </tr>
             <tr>
           
-                <td   ;font-size:16px; font-family:times new roman">Examen Complémentaire</td>
+                <td  style="font-weight:bold ;font-size:16px; font-family:times new roman">Examen Complémentaire</td>
                 
                 
                 
@@ -149,7 +149,7 @@
                 <td>
             <div class="col-3">
                 <div class="input-group " style="width:400px">
-                    <div class="input-group-text bg-primary" ><i class="fas fa-lock text-light"></i></div>
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
                     <input type="text" class="form-control" name="contenu" value="">
                 </div>
             </div><br>
@@ -162,7 +162,7 @@
                 <td>
             <div class="col-3">
                 <div class="input-group" style="width:400px">
-                    <div class="input-group-text bg-primary"><i class="fas fa-lock text-light"></i></div>
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
                     <input type="date" class=" form-control" name="dateExamen" value="" >
                 </div>
             </div> <br>
@@ -215,7 +215,7 @@
                 <td>
             <div class="col-3">
                 <div class="input-group " style="width:400px">
-                    <div class="input-group-text bg-primary" ><i class="fas fa-lock text-light"></i></div>
+                    <div class="input-group-text bg-primary" ><i class="fas fa-user text-light"></i></div>
                     <input type="text" class="form-control" name="date" disabled="disabled" value="{{$d}}">
                 </div>
             </div><br>
@@ -228,7 +228,7 @@
                 <td>
             <div class="col-3">
                 <div class="input-group" style="width:400px">
-                    <div class="input-group-text bg-primary"><i class="fas fa-lock text-light"></i></div>
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
                     <input type="text" class=" form-control" name="description" value="" >
                 </div>
             </div> <br>

@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-center justify-content-between" style="border-top:4px solid #37c7cd">
+                <div class="card-header  justify-content-between" style="border-top:4px solid #37c7cd">
                     <h2>Liste des patient</h2>
                 </div>
                     <div class="card-body">

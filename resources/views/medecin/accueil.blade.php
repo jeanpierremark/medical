@@ -60,7 +60,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="../img/med2.jpg" alt="Profile" class="rounded-circle">
+            <img src="../img/doc2.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2" style="color:darkblue;"> {{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -94,7 +94,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside  class="sidebar " style="background-image: url('../img/med2.jpg'); margin-top: 0px ;" >
+  <aside  class="sidebar " style="background-image: url('../img/doc2.jpg'); margin-top: 0px ; background-repeat:no-repeat;background-height:100%;background-position:center" >
    
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -110,8 +110,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-users"></i>Agenda</a>
                 <div class="dropdown-menu  border-0">
-                    <a href="{{route('medecin.listeRv')}}" class="dropdown-item text-secondary">Liste rendez-vous</a>
-                    <a href="{{ route('medecin.getevent') }}" class="dropdown-item text-secondary">Calendrier</a>
+                    <a href="{{route('medecin.listeRv')}}" class="dropdown-item text-secondary fa fa-list text-warning">&nbsp;Liste des rendez-vous</a>
+                    <a href="{{ route('medecin.getevent') }}" class="dropdown-item text-secondary fa fa-calendar-alt text-danger">&nbsp;Calendrier</a>
                     
                     
                 </div>
@@ -217,19 +217,16 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+  <!-- ======= Footer ======= 
+  
   <footer id="footer" class="footer"  style="background-color:white">
     <div class="copyright">
       &copy; Copyright 2022 <strong>SJD</strong>. Tous droits réservés
     </div>
     <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      
+     
     </div>
-  </footer><!-- End Footer -->
+  </footer> End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center" style="background-color:darkblue;"><i  class="bi bi-arrow-up-short"></i></a>
 
