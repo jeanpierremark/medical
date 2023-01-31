@@ -94,7 +94,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside  class="sidebar " style="background-image: url('../img/doc2.jpg'); margin-top: 0px ; background-repeat:no-repeat;background-height:100%;background-position:center" >
+  <aside  class="sidebar " style="background-image: url('../img/doc2.jpg'); margin-top: 0px ;background-repeat:no-repeat;" >
    
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -130,7 +130,13 @@
                     Consultations
                 </a>
             </li>
-            
+            <hr class="sidebar- text-light">
+            <li class="nav-item">
+                <a class="nav-link " href="{{route('medecin.hospita')}}">
+                    <i class="fas fa-file"></i>
+                    Hospitalisations
+                </a>
+            </li>
             
     </ul>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -217,16 +223,22 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= 
-  
-  <footer id="footer" class="footer"  style="background-color:white">
-    <div class="copyright">
+   <!-- ======= Footer ======= -->
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <footer id="footer" class="footer" style="background-color:white">
+    <div class="copyright" >
       &copy; Copyright 2022 <strong>SJD</strong>. Tous droits réservés
     </div>
     <div class="credits">
-     
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+
     </div>
-  </footer> End Footer -->
+  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center" style="background-color:darkblue;"><i  class="bi bi-arrow-up-short"></i></a>
 

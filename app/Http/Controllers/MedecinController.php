@@ -113,12 +113,14 @@ class MedecinController extends Controller
     public function ajouterCons(Request $request){
         $idmed=0;
         $mt='';
+        $medspe='';
         $motif=Consultation::select('motifConsultation')->wherepatientId($request->id)->get();
-        $med= Medecin::select('id')->whereuserId(Auth()->user()->id)->get();
+        $med= Medecin::whereuserId(Auth()->user()->id)->get();
         $rdv= DB::table('rendez_vouses')->wherepatientId($request->id)->max('id');
         $rdvs=RendezVous::find($rdv);
         foreach($med as $m){
             $idmed=$m->id;
+            $medspe=$m->specialite;
         }
         foreach($motif as $mo){
             $mt=$mo->motifConsultation;
@@ -153,6 +155,7 @@ class MedecinController extends Controller
                     $hospi->dateEntree=$request->dateConsultation;
                     $hospi->patient_id=$request->id;
                     $hospi->medecin_id=$idmed;
+                    $hospi->service=$medspe;
                     $hospi->save();
                 }
                 return $this->listeConsultation();
@@ -341,12 +344,31 @@ class MedecinController extends Controller
             }
             
     }
+    public function listehospita(){
+        
+        $patient=Patient::all();
+        $hosp=Hospitalisation::wheredatesortie(null)->get();
+        $mede=0;
+        $med=Medecin::whereuserId(Auth()->user()->id)->get();
+        foreach($med as $m){
+            $mede=$m->id;
+        }
+        $medecin=Medecin::find($mede);
+        return view('medecin.listehospita',compact('hosp','patient','medecin'));
+    }
 
     public function dossier($id){
         $patient=Patient::find($id);
        // $traitement=Traitement::
-       $visite=RendezVous::wheremedecinId(Auth()->user()->id)->wherestatut('effectif')->wherepatientId($id)->get();
-       $cons=Consultation::wheremedecinId(Auth()->user()->id)->wherepatientId($id)->get();
+       $mede=0;
+        $med=Medecin::whereuserId(Auth()->user()->id)->get();
+        foreach($med as $m){
+            $mede=$m->id;
+        }
+
+
+       $visite=RendezVous::wheremedecinId($mede)->wherestatut('effectif')->wherepatientId($id)->get();
+       $cons=Consultation::wheremedecinId($mede)->wherepatientId($id)->get();
        $evolu=Evolution::all();
        $examCons=Consultation::wherepatientId($id)->get();
        $exam=ExamenComplementaire::all();

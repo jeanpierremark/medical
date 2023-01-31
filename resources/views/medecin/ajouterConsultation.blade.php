@@ -1,4 +1,4 @@
-@extends('medecin.dashboard')
+@extends('medecin.accueil')
 @section('content')
 <h1 style="color:darkblue"  class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span> Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span>  <span style="margin-left:400px"><a href="" data-bs-toggle="modal" data-bs-target="#traitement" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-gray-600">
@@ -240,7 +240,7 @@
 	</table><br>
 
 </div>
-
+<!--
 <div class="modal fade" id="traitement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -305,7 +305,7 @@
       </div><br>
       </td>
       </tr>
-      <tr><b> Médicaments </b> <span id="medi" style="margin-left:50px" class="btn btn-primary bi bi-plus" ></span></tr> <br><br>
+      <tr><b> Médicaments </b> <p id="add_button" style="margin-left:50px">ajout</p></tr> <br><br>
       
       <div class="col-3">
           <div class="input-group " style="width:400px">
@@ -321,7 +321,7 @@
           </div>
       </div><br>
  
-    <div id="ajout"></div>
+    <div id="more_answers"></div>
        <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -334,24 +334,13 @@
 </div>
 
 
-<script>
-        let med=document.getElementById('medi');
-        let t=document.getElementById('ajout');
-        med.addEventListener('click',function(){
-            t.append(' < input type="text">');
-         
-             
-           
-          
-      
-
-   
-        });
-
-    </script>
+-->
+       
 
 
 
+
+<!--
 
 <div class="modal fade" id="traitementcours" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -404,7 +393,7 @@
          
     
        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
       </div>
 </form>
@@ -413,7 +402,54 @@
     </div>
   </div>
 </div>
+-->
+<!-- Button trigger modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form id="myForm" method="" action="">
+        <label for="question"> Question </label> <br>
+        <input class="champ" type="textarea" name="question" id="question" value=""><br><br>
+       
+        <div id="more_answers"></div>
+        <br>
+        <h1 id="add_button">Add proposition</h1> <br><br><br>
+        <input type="submit" value="submit">
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+     console.log( $(wrapper).append(`<input type="text" name="ans1" id="ans1" value=""><br><input type="checkbox" name="ans2" id="ans2"`) />) 
+    var addButton = $('#add_button');
+var wrapper = $('#more_answers');
+$(addButton).click(function(e) {
+    e.preventDefault();
+  console.log( $(wrapper).append(`<input type="text" name="ans1" id="ans1" value=""><br><input type="checkbox" name="ans2" id="ans2"`) />) 
+        
+});
+
+$(wrapper).on("click", ".delete", function(e) {
+    e.preventDefault();
+    $(this).parent('div').remove();
+})
+</script>
 @endsection
 
 			

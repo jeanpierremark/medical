@@ -60,6 +60,7 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     Route::get('supprimerConsultation{id}', [MedecinController::class, 'deleteCons'])->name('medecin.supcons');
     Route::get('detailConsultation{id}', [MedecinController::class, 'detailCons'])->name('medecin.detailCons');
     route::get('supprimerRendezVous{id}', [MedecinController::class, 'supprimerRv'])->name('medecin.supprimerRv');
+    route::get('hospitalisation', [MedecinController::class, 'listehospita'])->name('medecin.hospita');
     route::get('patientDossier{id}', [MedecinController::class, 'dossier'])->name('medecin.dossier');
 });
 

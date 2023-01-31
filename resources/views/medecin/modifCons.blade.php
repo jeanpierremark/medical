@@ -4,7 +4,7 @@
 
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid darkblue; ">
 	<br>
-	<center> <caption ><div class="bi bi-pencil-square" style="font-size:25px"> &nbsp; Modifier de  Consultation de <span class="text-primary"> @foreach($cons as $c) {{$c->patient->prenom}} {{$c->patient->nom}} @endforeach</span></div> </caption>
+	<center> <caption ><div class="bi bi-pencil-square" style="font-size:25px"> &nbsp; Modifier la Consultation de <span class="text-primary"> @foreach($cons as $c) {{$c->patient->prenom}} {{$c->patient->nom}} @endforeach</span></div> </caption>
 
         
 		@if(isset($var))
