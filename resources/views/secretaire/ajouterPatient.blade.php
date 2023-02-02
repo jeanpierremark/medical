@@ -173,7 +173,7 @@
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>
 						<div class=" form-group">
-							<input  class="fa fa-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="ajouter" value=" Ajouter">
+                        <button class="bi bi-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="ajouter" >&nbsp;Ajouter</button>
 
 						</div>
 					</td>
@@ -201,20 +201,4 @@
 </div>
 
 @endsection
- <!--
-					<td>
-						<div class=" form-group">
-							<label style="margin-left: 50px; color: darkblue ;" class="control-label" for="service"><strong>Service Santé</strong></label>
-							<select name="domaine">
-								<option value="cardiologie">Cardiologie</option>
-								<option value="dermatologie">Dermatologie</option>
-								<option value="pediatrie">Pédiatrie</option>
-								<option value="neurologie">Neurologie</option>
-								<option value="nephrologie">Néphrologie</option>
-								<option value="gastro-enterologie">Gastro-Enterologie</option>
-								<option value="ophtalmologie">Ophtalmologie</option>
-								<option value="gynecologie">Gynécologie</option>
-							</select>
-						</div>
-					</td>
-                -->
+ 

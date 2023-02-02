@@ -181,7 +181,7 @@
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>
 						<div class=" form-group">
-                        <button type="submit" class="btn btn-primary  ">&nbsp;Modifier</button>
+                        <button class="bi bi-pencil-square btn btn-primary"  style="font-family:times new roman"  type="submit" name="modifier" >&nbsp;Modifier</button>
 
 						</div>
 					</td>

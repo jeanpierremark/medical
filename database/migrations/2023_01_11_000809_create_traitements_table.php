@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('traitements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('libelle');
+            $table->string('description');
             $table->string('type');
             $table->integer('medecin_id')->unsigned();
             $table->foreign('medecin_id')->references('id')->on('medecins')->onDelete("cascade");

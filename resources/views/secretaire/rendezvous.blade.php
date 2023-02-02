@@ -64,7 +64,7 @@
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>
 						<div class=" form-group">
-							<input class="bi bi-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="modifier" value="Modifier">
+                        <button class="bi bi-pencil-square btn btn-primary"  style="font-family:times new roman"  type="submit" name="modifier" >&nbsp;Modifier</button>
 
 						</div>
 					</td>

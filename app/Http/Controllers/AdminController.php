@@ -64,27 +64,7 @@ class AdminController extends Controller
     }
     public function ajoutMedecin(Request $request)
     {
-        /*
-        $medecin = new Medecin();
-        $medecin->prenom = $request->prenom;
-        $medecin->nom = $request->nom;
-        $medecin->telephone = $request->telephone;
-        $medecin->adresse = $request->adresse;
-        $medecin->specialite = $request->specialite;
-        //$medecin->idUser = DB::table('users')->orderBy('id', 'desc')->value('id');
-        //$id = User::find(DB::table('users')->max('id'));
-        //return $id;
-        //$sql="select MAX(id) from users where role='medecin'";
-        $id = DB::table('users')->where('role','medecin')->max('id');
-        //return  dump($id);
-        $medecin->idUser = $id;
-        if($medecin->idUser != (DB::table('medecins')->max('idUser'))){
-            $medecin->save();
-        }
-
-        return view('admin.medecin.ajouterMedecin');
-        */
-
+       
         $user = new User();
         $user->name = $request->name;
         $user->prenom = $request->prenom;

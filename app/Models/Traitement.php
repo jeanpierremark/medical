@@ -9,9 +9,9 @@ class Traitement extends Model
 {
 
     use HasFactory;
-    protected $fillable = array('libelle', 'type',);
+    protected $fillable = array('description', 'type',);
 
-   protected $rules = array('libelle'=>'required|min:10','type'=>'required|min:10');
+   protected $rules = array('description'=>'required|min:10','type'=>'required|min:10');
 
    public function patient(){
        return $this->belongsTo(Patent::class);

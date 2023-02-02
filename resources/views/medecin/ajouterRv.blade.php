@@ -59,7 +59,7 @@
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>
 						<div class=" form-group">
-							<input class="bi bi-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="ajouter" value=" Ajouter">
+                        <button class="bi bi-plus btn btn-primary"  style="font-family:times new roman"  type="submit" name="ajouter" >&nbsp;Ajouter</button>
 
 						</div>
 					</td>

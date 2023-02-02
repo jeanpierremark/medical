@@ -344,6 +344,31 @@ class MedecinController extends Controller
             }
             
     }
+
+
+    public function detailPatient($id){
+        $patient=Patient::find($id);
+        return view('medecin.detailpatient',compact('patient'));
+        
+    }
+
+
+
+
+
+
+
+    public function traitement($id){
+        return view('medecin.traitement',compact('id'));
+    }
+
+    public function ajoutertraitement(Request $request){
+
+       
+        return $_GET['libelle'];
+    }
+        
+        
     public function listehospita(){
         
         $patient=Patient::all();
@@ -377,3 +402,5 @@ class MedecinController extends Controller
         return view('medecin.dossier',compact('patient','visite','cons','examCons','exam','evolu','hospi','medecin'));
     }
 }
+
+?>
