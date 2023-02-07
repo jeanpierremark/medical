@@ -37,7 +37,7 @@
                                     <td>{{$p->patient->age}}</td>
                                     <td>
 
-                                    <a href="{{route('medecin.detailPatient',$p->patient->id)}}" class="btn btn-info"><span class="bi bi-eye"></span></a>
+                                    <a href="{{route('medecin.detailPatient',$p->patient->id)}}" class="btn btn-primary"><span class="bi bi-eye"></span></a>
                                         <a href="{{route('medecin.getrendezVous',$p->patient->id)}}" class="btn btn-warning"><span class="fa fa-calendar-alt"></span></a>
                                         <a href="{{route('medecin.addconsultation',$p->patient->id)}}" class="btn btn-secondary " ><span class="bi bi-file-text-fill text-light"></span></a>
 

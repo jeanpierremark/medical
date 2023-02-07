@@ -6,6 +6,8 @@ use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Orienter;
 use App\Models\Evolution;
+use App\Models\Medicament;
+use App\Models\Ordonnance;
 use App\Models\RendezVous;
 use App\Models\Traitement;
 use App\Models\Consultation;
@@ -363,9 +365,51 @@ class MedecinController extends Controller
     }
 
     public function ajoutertraitement(Request $request){
-
+       $ordonnance= new Ordonnance();
+       $traitement=new Traitement();
        
-        return $_GET['libelle'];
+       $tab1=$_POST['libelle'];
+        $tab2=$_POST['quantite'];
+        $mede=0;
+        $med=Medecin::whereuserId(Auth()->user()->id)->get();
+        foreach($med as $m){
+            $mede=$m->id;
+        }
+        
+
+        if(is_null($request->description) || is_null($request->type)  ||  $tab1[0]=="" || $tab2[0]=="" ){
+            $var='veuillez remplir tous les champs ';
+            $id=$request->id;
+            return view('medecin.traitement',compact('id','var'));
+        }
+
+        else{
+            $traitement->description=$request->description;
+            $traitement->type=$request->type;
+            $traitement->patient_id=$request->id;
+            $traitement->medecin_id=$mede;
+            $res=$traitement->save();
+            if($res==1){
+                $ordonnance->traitement_id=DB::table('traitements')->max('id');
+                $ordonnance->dateOrdonnance=$request->dateOrdonnance;
+                $re=$ordonnance->save();
+                if($re==1){
+                    for($i=0;$i<count($tab1);$i++){
+                    $medicament=new Medicament();
+                    $medicament->ordonnance_id=DB::table('ordonnances')->max('id');
+                    $medicament->libelle=$tab1[$i];
+                    $medicament->quantite=$tab2[$i];
+                    $medicament->save();
+
+                    $vr=' Enregistré avec succès';
+                    $id=$request->id;
+                    return view('medecin.traitement',compact('id','vr'));
+                }
+            }
+            }
+        }
+       
+      
     }
         
         
@@ -382,6 +426,13 @@ class MedecinController extends Controller
         return view('medecin.listehospita',compact('hosp','patient','medecin'));
     }
 
+    public function editHosp($id){
+        $hosp=Hospitalisation::find($id);
+        $hosp->dateSortie=date('Y-m-d');
+        $hosp->save();
+        return $this->listehospita();
+    }
+
     public function dossier($id){
         $patient=Patient::find($id);
        // $traitement=Traitement::
@@ -390,8 +441,7 @@ class MedecinController extends Controller
         foreach($med as $m){
             $mede=$m->id;
         }
-
-
+       $traitement=Traitement::wherepatientId($id)->get();
        $visite=RendezVous::wheremedecinId($mede)->wherestatut('effectif')->wherepatientId($id)->get();
        $cons=Consultation::wheremedecinId($mede)->wherepatientId($id)->get();
        $evolu=Evolution::all();
@@ -399,7 +449,9 @@ class MedecinController extends Controller
        $exam=ExamenComplementaire::all();
        $medecin=Medecin::with('user')->get();
        $hospi=Hospitalisation::wherepatientId($id)->get(); 
-        return view('medecin.dossier',compact('patient','visite','cons','examCons','exam','evolu','hospi','medecin'));
+       $medicament=Medicament::all();
+       $ordonnance=Ordonnance::all();
+        return view('medecin.dossier',compact('patient','visite','cons','examCons','exam','evolu','hospi','medecin','traitement','ordonnance','medicament'));
     }
 }
 

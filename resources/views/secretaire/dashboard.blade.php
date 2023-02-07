@@ -49,7 +49,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center justify-content-between">
                                         <div class="col mr-2">
-                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold " href="{{route('secretaire.listerPatient')}}">Liste des Patient</a>
+                                            <a style="color: darkblue;text-decoration: none;font-weight: bold;" class="h3  mb-0 font-weight-bold " href="{{route('secretaire.listerPatient')}}">Liste des Patients</a>
                                             
                                         </div>
                                         <div class="col-auto">

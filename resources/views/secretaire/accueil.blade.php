@@ -99,7 +99,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside  class="sidebar " style="background-image: url('../img/sec.jpeg'); margin-top: 0px ;" >
+  <aside  class="sidebar " style="background-image: url('../img/sec.jpeg'); margin-top: 0px ; " >
 
 
     <ul class="sidebar-nav" id="sidebar-nav">

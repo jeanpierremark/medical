@@ -4,7 +4,7 @@
 <h1 style="color:darkblue" class="text-primary"><span class="fa fa-user">&nbsp;</span>Patients <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Ajouter rendez-vous</span></h1>
 <div class="card  " style="border-top:4px solid #1ca8e3">
     <br>
-   <center> <caption><span class="fa fa-calendar-alt"> &nbsp; Ajouter Rendez-vous</span> </caption>
+   <center> <caption><span class="fa fa-calendar-alt" style="font-size:25px"> &nbsp; Ajouter Rendez-vous</span> </caption>
    @if(isset($var))
 				
                 <div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>

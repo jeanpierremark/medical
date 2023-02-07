@@ -4,7 +4,7 @@
 
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid darkblue; ">
 	<br>
-	<center> <caption ><span class="fa fa-plus" style="font-size:25px"> &nbsp; Ajouter Patient</span> </caption>
+	<center> <caption ><span class="fa fa-user-plus" style="font-size:25px"> &nbsp; Ajouter Patient</span> </caption>
     @if(isset($confirmation))
 			@if($confirmation==1)
 

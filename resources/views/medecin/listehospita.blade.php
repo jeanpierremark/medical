@@ -38,7 +38,7 @@
                                     <td>
                                        
                                         <a href="{{route('medecin.editHospita',$h->id)}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
-                                        <a href="" class="btn btn-success " ><span class="bi bi-eye"></span></a>
+                                        <a href="{{route('medecin.dossier',$p->id)}}" class="btn btn-warning " ><span class="bi bi-folder"></span></a>
                                         
                                         
                                     </td>

@@ -73,18 +73,13 @@
                             <div id="c1" style="border-top:5px solid red;" class="card  bg-white shadow h-70 py-2">
                             
                                 <div class="card-body ">
-                                <a href="{{route('medecin.detailCons',$patient->id)}}" class="btn btn-warning btn-icon-split col-md-12" style="margin-bottom:10px">
-                                        <span class="icon text-gray-600">
-                                            <i  class="bi bi-file-text-fill"></i>
-                                        </span>
-                                        <span class="text"> Voir la  Consultation </span>
-                                    </a></span>
+                                
                                     
                                     <a href="{{route('medecin.dossier',$patient->id)}}" class="btn btn-info btn-icon-split col-md-12">
                                         <span class="icon text-gray-600">
                                             <i  class="bi bi-folder"></i>
                                         </span>
-                                        <span class="text"> Ouvrir le Dossier  </span>
+                                        <span > Ouvrir le Dossier  </span>
                                     </a></span>
                                    
                                 </div>

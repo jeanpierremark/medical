@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Sms;
+use App\Models\Patient;
+use App\Models\RendezVous;
 use Illuminate\Http\Request;
 
 
@@ -33,8 +35,12 @@ class Notification extends Controller
             'token' => $data['access_token']
         );
 
-        $response = $osms->sendSms('tel:+221772265039','tel:+224771380492','Bonjourrrrrrrrrrrr','SJD-Medical');
-            
+        $rendezvous=RendezVous::wherestatut('non_effectif')->get();
+        $patient=Patient::all();
+       
+                    $response = $osms->sendSms('+221772265039','+221777454584','Bonjour ' ,'SJD-Medical');
+                
+        
          return view('welcome');
     }
     

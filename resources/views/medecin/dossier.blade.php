@@ -1,5 +1,10 @@
 @extends('medecin.accueil')
 @section('content')
+<Style>
+    td .med{
+        display:block;
+    }
+</Style>
 <h1 class="text-primary"><span class="bi bi-folder">&nbsp;</span>Dossier <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">patient</span></h1>
 <div class="card col-md-12" style="border-top:4px solid aqua; height:450px">
     <div class="card-body">
@@ -202,7 +207,7 @@
                             <div id="c1" style="border-top:5px solid aqua;" class="card  bg-white shadow h-70 py-2">
                             <div class="card-head">&nbsp;<b> Evolution</b></div>
                                 <div class="card-body ">
-                                <br>
+                                <br> 
                                 <table>
                                         <thead>
                                             <th  style="padding-bottom:25px;">Date </th>
@@ -235,7 +240,31 @@
                             <div id="c1" style="border-top:5px solid aqua;" class="card  bg-white shadow h-70 py-2">
                             <div class="card-head">&nbsp;<b> Traitements</b></div>
                                 <div class="card-body ">
-                                    
+                                <br>
+                                <table>
+                                        <thead>
+                                            <th  style="padding-bottom:25px;">Description </th>
+                                            <th style="padding-left:100px;padding-bottom:25px;">Type</th>
+                                            <th style="padding-left:100px;padding-bottom:25px;">Medecin</th>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($traitement as $trait)
+                                        @foreach($medecin as $med)
+                                            @if($med->id == $trait->medecin_id)
+
+                                            <tr>
+                                            <td style="padding-bottom:25px;">{{$trait->description}} </td>
+                                            <td style="padding-left:100px;padding-bottom:25px;">{{$trait->type}}</td>
+                                            <td style="padding-left:100px;padding-bottom:25px;">Doc {{$med->user->prenom}} {{$med->user->nom}}</td>
+                                            </tr>
+
+                                            @endif
+                                            @endforeach
+                                            @endforeach
+                                       
+                                        </tbody>
+                                       
+                                    </table>
                                    
                                 </div>
                             </div>
@@ -246,7 +275,34 @@
                             <div id="c1" style="border-top:5px solid aqua;" class="card  bg-white shadow h-70 py-2">
                             <div class="card-head">&nbsp;<b> Ordonnances</b></div>
                                 <div class="card-body ">
-                                    
+                                <br>
+                                <table>
+                                        <thead>
+                                            <th  style="padding-bottom:25px;">Date </th>
+                                            <th style="padding-left:100px;padding-bottom:25px;">Médicaments</th>
+                                           
+                                        </thead>
+                                        <tbody>
+                                        @foreach($traitement as $trait)
+                                        @foreach($ordonnance as $ord)
+                                            @if($trait->patient_id == $patient->id && $ord->traitement_id == $trait->id)
+
+                                            <tr>
+                                            <td style="padding-bottom:25px;"> <?php echo substr($ord->dateOrdonnance,0,10) ?> </td>
+                                           
+                                            @foreach($medicament as $medi)
+                                            @if($medi->ordonnance_id == $ord->id)
+                                            <td class="med" style="padding-bottom:25px;padding-left:100px;">{{$medi->libelle}} : {{$medi->quantite}} </td> 
+                                            @endif
+                                            @endforeach
+                                           
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                            @endforeach
+                                        </tbody>
+                                       
+                                    </table>
                                    
                                 </div>
                             </div>

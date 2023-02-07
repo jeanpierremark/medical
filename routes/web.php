@@ -21,7 +21,7 @@ use App\Http\Controllers\FullCalendarController;
 Route::get('/', function () {
     return view('welcome');
 })->name('accueil');
-Route::get('dashboard', [Notification::class, 'envoiSMS'])->name('message');
+//Route::get('/', [Notification::class, 'sendSMS'])->name('message')->name('accueil');
 
 Auth::routes();
 
@@ -62,10 +62,10 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('supprimerRendezVous{id}', [MedecinController::class, 'supprimerRv'])->name('medecin.supprimerRv');
     route::get('hospitalisation', [MedecinController::class, 'listehospita'])->name('medecin.hospita');
     route::get('traitement{id}', [MedecinController::class, 'traitement'])->name('medecin.traitement');
-    route::post('ajoutertraitement', [MedecinController::class, 'ajoutertraitement'])->name('medecin.addtraitement');
+    route::post('ajoutertraitement{id}', [MedecinController::class, 'ajoutertraitement'])->name('medecin.addtraitement');
     route::get('patientDossier{id}', [MedecinController::class, 'dossier'])->name('medecin.dossier');
     route::get('editerHospitalisation{id}', [MedecinController::class, 'editHosp'])->name('medecin.editHospita');
-    route::post('modifierHospitalisation', [MedecinController::class, 'modifHosp'])->name('medecin.modeHosp');
+   
     route::get('infoPatient{id}', [MedecinController::class, 'detailPatient'])->name('medecin.detailPatient');
 });
 

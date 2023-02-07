@@ -57,13 +57,13 @@ class SecretaireController extends Controller
 
         $d=0;
         $pa=0;
-        $por=Orienter::wherepatientId($request->id)->get();
+        $por=Orienter::wherepatientId($request->id)->wheredomaine($request->domaine)->get();
         foreach($por as $p){
             $d=$p->domaine;
             $pa=$p->patient_id;
         }
         
-
+        
 
 
        if(is_null($request->date) || is_null($request->medecin) || is_null($request->domaine) || is_null($request->libelle)){
@@ -74,7 +74,8 @@ class SecretaireController extends Controller
         return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
        }
 
-       else if($d== $request->domaine && $pa==$request->id){
+    else{ 
+        if($d == $request->domaine && $pa==$request->id){
             $id=$request->id;
             $var='Le patient a déjà été orienté à ce service ';
             $medecin=User::with('medecin')->whererole('medecin')->get();
@@ -122,24 +123,18 @@ class SecretaireController extends Controller
             else {
                 $rendezvous->medecin_id = $medd;
                 $result=$rendezvous->save();
-               
-            }
-        }
-        $a=0;
-        if($result==1 ){
-           
                 $oriente->patient_id=$request->id;
                 $oriente->domaine= $request->domaine;
                 $oriente->secretaire_id= $send;
                
                 $a=$oriente->save();
-            
+               
+            }
         }
         
-       
-        return $this->listerendezVous();
-    }
-        
+            return $this->listerendezVous();
+        }
+    }  
 
     }
 
