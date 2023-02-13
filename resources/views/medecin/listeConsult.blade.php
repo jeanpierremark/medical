@@ -32,7 +32,7 @@
                                         <a href="{{route('medecin.detailCons',$cons->id)}}" class="btn btn-success " ><span class="bi bi-eye"></span></a>
                                         <a href="{{route('medecin.supcons',$cons->id)}}" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
                                         <a href="{{route('medecin.dossier',$cons->patient->id)}}" class="btn btn-warning " ><span class="bi bi-folder"></span></a>
-                                        
+                                        <a href="{{route('medecin.traitement',$cons->patient->id)}}"   class="btn btn-info" ><span class="bi bi-file-text"></span></a>
                                     </td>
                                 </tr>
                             @endforeach

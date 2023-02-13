@@ -350,13 +350,57 @@ class MedecinController extends Controller
 
     public function detailPatient($id){
         $patient=Patient::find($id);
-        return view('medecin.detailpatient',compact('patient'));
+        $orienter=Orienter::wherepatientId($id)->get();
+        $traitement=Traitement::with('medecin')->get();
+        $medecin=Medecin::with('user')->get();
+        $ordonnance=Ordonnance::all();
+        $medicament=Medicament::all();
+        return view('medecin.detailpatient',compact('patient','medecin','traitement','orienter','ordonnance','medicament'));
         
     }
 
+    public function ordonnance($id){
+        return view('medecin.ordonnance',compact('id'));
+    }
 
-
-
+    public function addOrdonnance(Request $request){
+        $ordonnance= new Ordonnance();
+        $trait=Traitement::find($request->id);
+        
+        $tab1=$_POST['libelle'];
+         $tab2=$_POST['quantite'];
+         
+        
+ 
+         if(is_null($request->dateOrdonnance)  ||  $tab1[0]=="" || $tab2[0]=="" ){
+             $var='veuillez remplir tous les champs ';
+             $id=$request->id;
+             $v=$trait->patient_id;
+             return view('medecin.traitement',compact('id','var'));
+         }
+ 
+         else{
+            
+                 $ordonnance->traitement_id=$request->id;
+                 $ordonnance->dateOrdonnance=$request->dateOrdonnance;
+                 $re=$ordonnance->save();
+                 if($re==1){
+                     for($i=0;$i<count($tab1);$i++){
+                     $medicament=new Medicament();
+                     $medicament->ordonnance_id=DB::table('ordonnances')->max('id');
+                     $medicament->libelle=$tab1[$i];
+                     $medicament->quantite=$tab2[$i];
+                     $medicament->save();
+ 
+                     $vr=' Enregistré avec succès';
+                     $v=$trait->patient_id;
+                     return view('medecin.ordonnance',compact('v','vr'));
+                 }
+             
+             }
+         }
+        
+    }
 
 
 

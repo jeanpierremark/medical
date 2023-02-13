@@ -1,14 +1,14 @@
 @extends('medecin.accueil')
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<h1 style="color:darkblue" class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span>Traitement <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">ajouter</span></h1>
+<h1 style="color:darkblue" class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span>Ordonnance <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">ajouter</span></h1>
 
-<form method="POST" action="{{ route('medecin.addtraitement',$id) }}">
+<form method="POST" action="{{ route('medecin.addordonnnace',$id) }}">
     @csrf
     <div class="card" style="border-top:4px solid #1ca8e3">
     <br>
        <center> 
-        <h1 class="bi bi-file-text-fill">Ajouter Traitement</h1>
+        <h1 class="bi bi-file-text-fill">Ajouter Ordonnance</h1>
         @if(isset($var))
 				
                 <div style="width: 100%; font-size: 20px;" class="alert alert-danger ">{{$var}}</div>
@@ -24,22 +24,7 @@
         <div class="card-body ">
             <div style="margin-left :20%">
             <br>
-            <div class="text-primary"><h3>Traitement</h3></div> <br>
-            <div style="margin-left :20%">
-                <div class="col-3">
-                <div class="input-group" style="width:400px">
-                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="description" placeholder="Description" >
-                </div>
-            </div> <br>   
-
-                <div class="col-3">
-                <div class="input-group" style="width:400px">
-                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="text" class=" form-control" name="type" placeholder="Type" >
-                </div>
-            </div> <br><br>
-            </div>
+           
             <div class="text-primary"><h3>Ordonnance</h3></div><br>
             <div style="margin-left :20%">
             <div class="col-3">
@@ -69,7 +54,7 @@
                 </div>
            
                 <button class="bi bi-plus btn btn-primary"  style="font-family:times new roman" id="submit" type="submit" name="ajouter" >&nbsp;Ajouter</button>
-                <a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman; margin-left:80%" href="{{route('medecin.listeconsult')}}"> &nbsp;Retour</a>
+                <a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman; margin-left:80%" href="{{route('medecin.detailPatient')}}"> &nbsp;Retour</a>
                 
             </div>
         </div>

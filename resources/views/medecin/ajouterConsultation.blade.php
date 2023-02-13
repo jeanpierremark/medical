@@ -1,16 +1,8 @@
 @extends('medecin.accueil')
 @section('content')
-<h1 style="color:darkblue"  class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span> Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span>  <span style="margin-left:400px"><a href="{{route('medecin.traitement',$id)}}"  class="btn btn-warning btn-icon-split">
-                                        <span class="icon text-gray-600">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                                        <span class="text"> Traitement </span>
-                                    </a></span> <span style=""><a href=""  class="btn btn-primary btn-icon-split">
-                                        <span class="icon text-gray-600">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                                        <span class="text"> Traitements En cours </span>
-                                    </a></span></h1>
+<h1 style="color:darkblue"  class="text-primary"><span class="bi bi-file-text-fill">&nbsp;</span> Consultation <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "> Ajouter</span>  <span style="margin-left:400px">
+                                       
+                                   </h1>
 
 <div class="card col-xl-12 col-md-4 mb-4" style="border-top: 4px solid darkblue; ">
 	<br>
@@ -228,7 +220,7 @@
                 
                     <td>
 						<div class=" form-group">
-							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman;" href="{{route('medecin.lister')}}"> &nbsp;Retour</a>
+							<a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman; margin-left:60%" href="{{route('medecin.lister')}}"> &nbsp;Retour</a>
 
 						</div>
 					</td>

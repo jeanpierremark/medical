@@ -62,10 +62,11 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('supprimerRendezVous{id}', [MedecinController::class, 'supprimerRv'])->name('medecin.supprimerRv');
     route::get('hospitalisation', [MedecinController::class, 'listehospita'])->name('medecin.hospita');
     route::get('traitement{id}', [MedecinController::class, 'traitement'])->name('medecin.traitement');
+    route::get('ajouterOrdonnance{id}', [MedecinController::class, 'ordonnance'])->name('medecin.ordonnnace');
+    route::get('saveOrdonnance{id}', [MedecinController::class, 'addOrdonnance'])->name('medecin.addordonnnace');
     route::post('ajoutertraitement{id}', [MedecinController::class, 'ajoutertraitement'])->name('medecin.addtraitement');
     route::get('patientDossier{id}', [MedecinController::class, 'dossier'])->name('medecin.dossier');
     route::get('editerHospitalisation{id}', [MedecinController::class, 'editHosp'])->name('medecin.editHospita');
-   
     route::get('infoPatient{id}', [MedecinController::class, 'detailPatient'])->name('medecin.detailPatient');
 });
 

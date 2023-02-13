@@ -278,8 +278,9 @@
                                 <br>
                                 <table>
                                         <thead>
-                                            <th  style="padding-bottom:25px;">Date </th>
+                                            <th  style="padding-bottom:25px;">Traitement </th>
                                             <th style="padding-left:100px;padding-bottom:25px;">Médicaments</th>
+                                            <th style="padding-left:100px;padding-bottom:25px;">Date</th>
                                            
                                         </thead>
                                         <tbody>
@@ -288,11 +289,12 @@
                                             @if($trait->patient_id == $patient->id && $ord->traitement_id == $trait->id)
 
                                             <tr>
-                                            <td style="padding-bottom:25px;"> <?php echo substr($ord->dateOrdonnance,0,10) ?> </td>
+                                            <td style="padding-bottom:25px"> {{$trait->description}} </td> 
+                                            <td style="padding-left:100px;padding-bottom:25px;"> <?php echo substr($ord->dateOrdonnance,0,10) ?> </td>
                                            
                                             @foreach($medicament as $medi)
                                             @if($medi->ordonnance_id == $ord->id)
-                                            <td class="med" style="padding-bottom:25px;padding-left:100px;">{{$medi->libelle}} : {{$medi->quantite}} </td> 
+                                            <td style="padding-bottom:25px;padding-left:100px;"> {{$medi->libelle}} - {{$medi->quantite}} </td> 
                                             @endif
                                             @endforeach
                                            
