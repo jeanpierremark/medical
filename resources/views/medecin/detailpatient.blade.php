@@ -84,7 +84,7 @@
                                         @foreach($orienter as $or)
                                         
                                         
-                                            @if($or->domaine == $trait->medecin->specialite && $trait->medecin_id == $med->id && $trait->patient_id == $patient->id)
+                                            @if($or->domaine == $trait->medecin->specialite && $trait->medecin_id == $med->id && $conmed->specialite == $med->specialite && $trait->patient_id == $patient->id)
 
                                             <tr>
                                             <td style="padding-bottom:25px;">{{$trait->description}} </td>
@@ -115,7 +115,7 @@
                                         @foreach($traitement as $trait)
                                         @foreach($ordonnance as $ord)
                                         @foreach($orienter as $or)
-                                            @if($trait->patient_id == $patient->id && $ord->traitement_id == $trait->id && $or->domaine == $trait->medecin->specialite)
+                                            @if($trait->patient_id == $patient->id && $ord->traitement_id == $trait->id && $or->domaine == $trait->medecin->specialite && $conmed->specialite == $trait->medecin->specialite)
 
                                             <tr>
                                             <td style="padding-bottom:25px;"> {{$trait->description}}  </td> 

@@ -27,17 +27,17 @@
                         </thead>
                         <tbody>
                         @foreach ($rdvs as $r)
-                        @foreach ($patients as $or)
-                            @if($r->patient_id == $or->patient_id)
+                        @foreach ($service as $se)
+                            @if($r->medecin_id == $se->id)
                                 <tr>
                                     <td>{{$r->patient->prenom}} {{$r->patient->nom}}</td>
                                     <td>{{$r->date}}</td>
                                     <td>{{$r->libelle}}</td>
-                                    <td>{{$or->domaine}}</td>
+                                    <td>{{$se->specialite}}</td>
                                     <td>
                                        
                                         <a href="{{route('secretaire.editRV',$r->id)}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
-                                        <a href="{{route('secretaire.supprimerRv',$r->id)}}" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
+                                        <a href="{{route('secretaire.supprimerRv',$r->id)}}" onclick="return confirm('Voulez-vous supprimer?')" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
 
                                         
                                     </td>

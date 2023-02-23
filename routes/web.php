@@ -5,6 +5,7 @@ use App\Http\Controllers\Notification;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MedecinCalendar;
 use App\Http\Controllers\MedecinController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\SecretaireController;
 use App\Http\Controllers\FullCalendarController;
 /*
@@ -22,6 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('accueil');
 //Route::get('/', [Notification::class, 'sendSMS'])->name('message')->name('accueil');
+Route::get('send', [Notification::class, 'sendSMS']);
+Route::get('sendmail', [SendMailController::class, 'EnvoieEmail']);
 
 Auth::routes();
 
@@ -63,7 +66,7 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('hospitalisation', [MedecinController::class, 'listehospita'])->name('medecin.hospita');
     route::get('traitement{id}', [MedecinController::class, 'traitement'])->name('medecin.traitement');
     route::get('ajouterOrdonnance{id}', [MedecinController::class, 'ordonnance'])->name('medecin.ordonnnace');
-    route::get('saveOrdonnance{id}', [MedecinController::class, 'addOrdonnance'])->name('medecin.addordonnnace');
+    route::post('saveOrdonnance{id}', [MedecinController::class, 'addOrdonnance'])->name('medecin.addordonnnace');
     route::post('ajoutertraitement{id}', [MedecinController::class, 'ajoutertraitement'])->name('medecin.addtraitement');
     route::get('patientDossier{id}', [MedecinController::class, 'dossier'])->name('medecin.dossier');
     route::get('editerHospitalisation{id}', [MedecinController::class, 'editHosp'])->name('medecin.editHospita');

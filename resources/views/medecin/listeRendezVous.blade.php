@@ -38,7 +38,7 @@
                                         <td>
                                        
                                             <a href="{{route('medecin.editRv',$r->id)}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>
-                                            <a href="{{route('medecin.supprimerRv',$r->id)}}" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
+                                            <a href="{{route('medecin.supprimerRv',$r->id)}}" onclick="return confirm('Voulez-vous supprimer?')" class="btn btn-danger " ><span class="fa fa-trash"></span></a>
                                            
 
                                         

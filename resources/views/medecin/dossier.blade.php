@@ -86,16 +86,16 @@
                                             
                                         </thead>
                                         <tbody>
-                                        @foreach($visite as $v)
+                                       
                                          @foreach($cons as $c)
-                                            @if($c->patient_id == $v->patient_id)
+                                           
                                         <tr>
-                                            <td style="padding-bottom:25px;"> <?php echo substr($v->date,0,10) ?></td>
+                                            <td style="padding-bottom:25px;"> <?php echo substr($c->dateConsultation,0,10) ?></td>
                                             <td style="padding-left:100px;padding-bottom:25px;">{{$c->motifConsultation}}</td>
                                         </tr>
-                                            @endif
+                                          
                                             @endforeach
-                                            @endforeach
+                                      
                                             </tbody>
                                     </table>
                                     
@@ -279,9 +279,9 @@
                                 <table>
                                         <thead>
                                             <th  style="padding-bottom:25px;">Traitement </th>
-                                            <th style="padding-left:100px;padding-bottom:25px;">Médicaments</th>
                                             <th style="padding-left:100px;padding-bottom:25px;">Date</th>
-                                           
+                                            <th style="padding-left:100px;padding-bottom:25px;">Médicaments</th>
+                                          
                                         </thead>
                                         <tbody>
                                         @foreach($traitement as $trait)

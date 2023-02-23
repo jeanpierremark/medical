@@ -44,7 +44,7 @@
                                     <td>
                                         <a href="{{route('editer',$patient->id)}}" class="btn btn-warning"><span class="bi bi-pencil-square"></span></a>
                                         <a href="{{route('secretaire.getrendezVous',$patient->id)}}" class="btn btn-info"><span class="fa fa-calendar-alt"></span></a>
-                                        <a href="{{route('secretaire.supprimer', $patient->id)}}"  class="btn btn-danger"><span class="fa fa-trash"></span></a>                          
+                                        <a href="{{route('secretaire.supprimer', $patient->id)}}" onclick="return confirm('Voulez-vous supprimer?')" class="btn btn-danger"><span class="fa fa-trash"></span></a>                          
                                     </td>
                                 </tr>
                             @endforeach

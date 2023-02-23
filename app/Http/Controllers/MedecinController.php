@@ -355,7 +355,14 @@ class MedecinController extends Controller
         $medecin=Medecin::with('user')->get();
         $ordonnance=Ordonnance::all();
         $medicament=Medicament::all();
-        return view('medecin.detailpatient',compact('patient','medecin','traitement','orienter','ordonnance','medicament'));
+
+        $med=Medecin::whereuserId(Auth()->user()->id)->get();
+        foreach($med as $m){
+            $mede=$m->id;
+        }
+
+        $conmed=Medecin::find($mede);
+        return view('medecin.detailpatient',compact('patient','conmed','medecin','traitement','orienter','ordonnance','medicament'));
         
     }
 
@@ -376,7 +383,7 @@ class MedecinController extends Controller
              $var='veuillez remplir tous les champs ';
              $id=$request->id;
              $v=$trait->patient_id;
-             return view('medecin.traitement',compact('id','var'));
+             return view('medecin.traitement',compact('id','var','v'));
          }
  
          else{
@@ -486,8 +493,8 @@ class MedecinController extends Controller
             $mede=$m->id;
         }
        $traitement=Traitement::wherepatientId($id)->get();
-       $visite=RendezVous::wheremedecinId($mede)->wherestatut('effectif')->wherepatientId($id)->get();
-       $cons=Consultation::wheremedecinId($mede)->wherepatientId($id)->get();
+       $visite=RendezVous::wherestatut('effectif')->wherepatientId($id)->get();
+       $cons=Consultation::wherepatientId($id)->get();
        $evolu=Evolution::all();
        $examCons=Consultation::wherepatientId($id)->get();
        $exam=ExamenComplementaire::all();

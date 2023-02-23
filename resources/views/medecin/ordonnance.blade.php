@@ -54,7 +54,7 @@
                 </div>
            
                 <button class="bi bi-plus btn btn-primary"  style="font-family:times new roman" id="submit" type="submit" name="ajouter" >&nbsp;Ajouter</button>
-                <a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman; margin-left:80%" href="{{route('medecin.detailPatient')}}"> &nbsp;Retour</a>
+                <a class="bi bi-arrow-90deg-left btn btn-danger" style="font-family:times new roman; margin-left:80%" href="{{route('medecin.lister')}}"> &nbsp;Retour</a>
                 
             </div>
         </div>

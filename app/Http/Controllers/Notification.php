@@ -2,46 +2,81 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Sms;
+use GuzzleHttp\Client;
 use App\Models\Patient;
 use App\Models\RendezVous;
 use Illuminate\Http\Request;
-
+use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Console\Scheduling\Schedule;
 
 class Notification extends Controller
 {
-     /*  public function envoiSMS(){
-        $basic  = new \Vonage\Client\Credentials\Basic("ce6e68da", "lYQZwgErBAzWgni7");
-        $client = new \Vonage\Client($basic);
-        $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("221772268082", 'SJD-Medical', 'Bonjour Cher Patient vous avez rendez-vous demain (jp)')
-        );
-        
-        $message = $response->current();
-        
-        return view('welcome');
-    }*/
- public function sendSMS()
+      /*
+    public function sendSMS(Request $request)
     {
-        $config = array(
-            'clientId' => config('app.clientId'),
-            'clientSecret' =>  config('app.clientSecret'),
-        );
 
-        $osms = new Sms($config);
+        $client = new Client();
 
-        $data = $osms->getTokenFromConsumerKey();
-        $token = array(
-            'token' => $data['access_token']
-        );
+        $response = $client->request('POST','https://api.infobip.com/sms/1/text/single', [
+            'headers' => [
+                'Authorization' => 'Basic ' . base64_encode('ahmedfall:Ams-0401MF'),
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'from' => 'sender_name',
+                'to' => '784794446',
+                'text' => 'Your message text'
+            ]
+        ]);
 
-        $rendezvous=RendezVous::wherestatut('non_effectif')->get();
-        $patient=Patient::all();
-       
-                    $response = $osms->sendSms('+221772265039','+221777454584','Bonjour ' ,'SJD-Medical');
-                
-        
-         return view('welcome');
+        return $response->getStatusCode();
     }
-    
+    */
+
+    public function sendSMS(Request $request)
+    {
+        $client = new Client([
+            'base_uri' => "https://pw6g9l.api.infobip.com/",
+            'headers' => [
+                'Authorization' => "App f2c899914fd8acf12b24f163f5f70299-c46f75b2-59ca-4cb8-a517-8f6212b84954",
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ]
+        ]);
+
+       
+        $rendezvous= RendezVous::with('patient')->wherestatut('non_effectif')->get();
+     
+        
+        foreach ($rendezvous as $rv) {
+          
+                if( $rv->patient_id==$rv->patient->id &&  substr(substr( $rv->date,0,10),8,9)==(date('d')+1) && substr(substr( $rv->date,0,7),5,7)==date('m')){
+                  
+            $response = $client->request(
+            'POST',
+            'sms/2/text/advanced',
+            [
+                RequestOptions::JSON => [
+                    'messages' => [
+                        [
+                            'from' => 'SJD-Medical',
+                            'destinations' => [
+                                ['to' => '221'.$rv->patient->telephone],
+                            ],
+                            'text' => 'Bonjour '.$rv->patient->prenom.' '.$rv->patient->nom .', vous avez-rendez-vous demain à l\'hôpital Saint Jean de Dieu',
+                        ]
+                    ]
+                ],
+            ]
+        );
+
+        echo("HTTP code: " . $response->getStatusCode() . PHP_EOL);
+        echo("Response body: " . $response->getBody()->getContents() . PHP_EOL);
+    }
+
+  
+}
+        
+    }
 }

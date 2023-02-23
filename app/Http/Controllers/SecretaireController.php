@@ -28,9 +28,9 @@ class SecretaireController extends Controller
     public function listerendezVous()
     {
         $rdvs= RendezVous::with('patient')->wherestatut('non_effectif')->get();
-        $patients= Orienter::with('patient')->get();
+        $service=Medecin::all();
      
-        return view('secretaire.listerRv',compact('rdvs','patients'));
+        return view('secretaire.listerRv',compact('rdvs','service'));
     }
 
     public function getrendezVous($id)
@@ -76,11 +76,24 @@ class SecretaireController extends Controller
 
     else{ 
         if($d == $request->domaine && $pa==$request->id){
-            $id=$request->id;
-            $var='Le patient a déjà été orienté à ce service ';
-            $medecin=User::with('medecin')->whererole('medecin')->get();
-            $mede=Medecin::with('user')->get();
-            return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
+            $medecin=User::select('id')->whereemail($request->medecin)->get();
+           
+            foreach($medecin as $m){ 
+                $rend = $m->id;
+               
+            }
+
+            $mede=Medecin::whereuserId($rend)->get();
+            foreach($mede as $me){ 
+                $medd = $me->id;
+              
+            }
+            $rendezvous->medecin_id = $medd;
+            $rendezvous->date = $request->date;
+            $rendezvous->libelle = $request->libelle;
+            $rendezvous->patient_id = $request->id;
+            $result=$rendezvous->save();
+            return $this->listerendezVous();
         }
        else{
        
@@ -102,7 +115,6 @@ class SecretaireController extends Controller
                 $medd = $me->id;
                 $specia=$me->specialite;
             }
-              
           
                 if(substr( $request->date,0,4)<date('Y') || substr(substr( $request->date,0,7),5,7)<date('m')|| substr(substr( $request->date,0,7),5,7)>12 || substr(substr( $request->date,0,10),8,9)>31 || substr(substr( $request->date,0,10),8,9)<date('d')){
                 $id=$request->id;

@@ -1,0 +1,1 @@
+Bonjour vous avez rendez-vous demain à l'hôpital Saint Jean de Dieu
