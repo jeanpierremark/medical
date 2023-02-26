@@ -90,7 +90,7 @@
                                             <td style="padding-bottom:25px;">{{$trait->description}} </td>
                                             <td style="padding-left:100px;padding-bottom:25px;">{{$trait->type}}</td>
                                             <td style="padding-left:100px;padding-bottom:25px;">Doc {{$med->user->prenom}} {{$med->user->nom}}</td>
-                                            <td style="padding-left:100px;padding-bottom:25px;"><a href="{{route('medecin.ordonnnace', $trait->id)}}" class="btn btn-success bi bi-plus"></a></td>
+                                            <td style="padding-left:100px;padding-bottom:25px;"><a href="{{route('medecin.ordonnnace', $trait->id)}}" class="btn btn-primary bi bi-plus"></a></td>
                                             </tr>
 
                                             @endif
@@ -106,7 +106,8 @@
          <br>
                                 <table>
                                         <thead>
-                                            <th  style="padding-bottom:25px;">Traitement </th>
+                                            <th style="padding-bottom:25px;">Action </th>
+                                            <th  style="padding-left:50px;padding-bottom:25px;">Traitement </th>
                                             <th  style="padding-left:100px;padding-bottom:25px;">Date </th>
                                             <th style="padding-left:100px;padding-bottom:25px;">Médicaments</th>
                                            
@@ -118,7 +119,8 @@
                                             @if($trait->patient_id == $patient->id && $ord->traitement_id == $trait->id && $or->domaine == $trait->medecin->specialite && $conmed->specialite == $trait->medecin->specialite)
 
                                             <tr>
-                                            <td style="padding-bottom:25px;"> {{$trait->description}}  </td> 
+                                            <td> <a href="{{route('medecin.presor',$ord->id)}}" class="btn btn-warning"><span class="bi bi-file-text-fill"></span></a></td>
+                                            <td style="padding-left:50px;padding-bottom:25px;"> {{$trait->description}}  </td> 
                                             <td style="padding-left:100px;padding-bottom:25px;"> <?php echo substr($ord->dateOrdonnance,0,10) ?> </td>
                                            
                                             @foreach($medicament as $medi)

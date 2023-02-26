@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Console\Commands;
 
 use GuzzleHttp\Client;
 use App\Models\Patient;
@@ -8,33 +8,31 @@ use App\Models\RendezVous;
 use Illuminate\Http\Request;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Console\Command;
 
-class Notification extends Controller
+class NotificationRvSMS extends Command
 {
-      /*
-    public function sendSMS(Request $request)
-    {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'rappel:rdv';
 
-        $client = new Client();
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Rappel des rendez-vous par sms';
 
-        $response = $client->request('POST','https://api.infobip.com/sms/1/text/single', [
-            'headers' => [
-                'Authorization' => 'Basic ' . base64_encode('ahmedfall:Ams-0401MF'),
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'from' => 'sender_name',
-                'to' => '784794446',
-                'text' => 'Your message text'
-            ]
-        ]);
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
 
-        return $response->getStatusCode();
-    }
-    */
-
-    public function sendSMS()
     {
         $client = new Client([
             'base_uri' => "https://pw6g9l.api.infobip.com/",
@@ -71,12 +69,12 @@ class Notification extends Controller
             ]
         );
 
-        echo("HTTP code: " . $response->getStatusCode() . PHP_EOL);
-        echo("Response body: " . $response->getBody()->getContents() . PHP_EOL);
+        
     }
 
   
 }
-        
+
+        return Command::SUCCESS;
     }
 }

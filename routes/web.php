@@ -71,6 +71,7 @@ Route::group(['prefix' => 'medecin', 'middleware' =>['isMedecin','auth']], funct
     route::get('patientDossier{id}', [MedecinController::class, 'dossier'])->name('medecin.dossier');
     route::get('editerHospitalisation{id}', [MedecinController::class, 'editHosp'])->name('medecin.editHospita');
     route::get('infoPatient{id}', [MedecinController::class, 'detailPatient'])->name('medecin.detailPatient');
+    route::get('exporterOrdonnance{id}', [MedecinController::class, 'generatepdf'])->name('medecin.presor');
 });
 
     Route::group(['prefix' => 'secretaire', 'middleware' =>['isSecretaire','auth']], function () {

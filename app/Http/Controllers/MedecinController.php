@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Medecin;
 use App\Models\Patient;
 use App\Models\Orienter;
+use Barryvdh\DomPDF\PDF;
 use App\Models\Evolution;
 use App\Models\Medicament;
 use App\Models\Ordonnance;
@@ -401,7 +402,8 @@ class MedecinController extends Controller
  
                      $vr=' Enregistré avec succès';
                      $v=$trait->patient_id;
-                     return view('medecin.ordonnance',compact('v','vr'));
+                     $id=$request->id;
+                     return view('medecin.ordonnance',compact('id','v','vr'));
                  }
              
              }
@@ -503,6 +505,13 @@ class MedecinController extends Controller
        $medicament=Medicament::all();
        $ordonnance=Ordonnance::all();
         return view('medecin.dossier',compact('patient','visite','cons','examCons','exam','evolu','hospi','medecin','traitement','ordonnance','medicament'));
+    }
+
+    public function generatepdf($id){
+        $ordonnance=Ordonnance::find($id);
+        $medicament=Medicament::whereordonnance_id($id)->get();
+        $pdf= PDF::loadView('medecin.presor',compact('ordonnance','medicament'));
+        return $pdf->download('ordonnance.pdf');
     }
 }
 
