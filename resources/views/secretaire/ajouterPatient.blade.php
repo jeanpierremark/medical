@@ -168,7 +168,23 @@
             </td>
             </tr> 
          
-			
+			<tr>
+            <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td style="font-weight:bold;font-size:16px ; font-family:times new roman" >Email</td>
+               
+                <td>
+            <div class="col-3">
+                <div class="input-group" style="width:400px">
+                    <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
+                    <input type="email" class=" form-control" name="niveauEtude"  placeholder="Email"  value=" <?php
+                    if(isset($_POST['email']))
+                    echo $_POST['email']
+                    ?>">
+                </div>
+            </div> <br>
+            </td>
+            </tr>
             <tr>
             <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             <td>

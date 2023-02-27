@@ -167,6 +167,12 @@ class SecretaireController extends Controller
     }
     public function update(Request $request)
     {
+        if(is_null($request->nom) ||is_null($request->email)||is_null($request->prenom)||is_null($request->adresse)||is_null($request->telephone)||is_null($request->profession)||is_null($request->age)||is_null($request->sexe)||is_null($request->niveauEtude)){
+            $patient = Patient::find($request->id);
+            $var='Veuillez remplir tous les champs!';
+            return view('secretaire.modifier', compact('patient','var'));
+        }
+
         $patient = Patient::find($request->id);
         $patient->prenom = $request->prenom;
         $patient->nom =strtoupper($request->nom);
@@ -175,13 +181,14 @@ class SecretaireController extends Controller
         $patient->profession = $request->profession;
         $patient->age = $request->age;
         $patient->niveauEtude = $request->niveauEtude;
+        $patient->email = $request->email;
         $patient->save();
         return $this->lister();
     }
     public function ajoutPatient(Request $request)
     {
         $patient = new Patient();
-        if(is_null($request->nom)||is_null($request->prenom)||is_null($request->adresse)||is_null($request->telephone)||is_null($request->profession)||is_null($request->age)||is_null($request->sexe)||is_null($request->niveauEtude)){
+        if(is_null($request->nom) ||is_null($request->email)||is_null($request->prenom)||is_null($request->adresse)||is_null($request->telephone)||is_null($request->profession)||is_null($request->age)||is_null($request->sexe)||is_null($request->niveauEtude)){
        
             return view('secretaire.ajouterPatient',['var'=>'Veuillez remplir tous les champs!']);
         }
@@ -203,6 +210,7 @@ class SecretaireController extends Controller
         $patient->age = $request->age;
         $patient->sexe = $request->sexe;
         $patient->niveauEtude = $request->niveauEtude;
+        $patient->email = $request->email;
         $result = $patient->save();
 
         return view('secretaire.ajouterPatient', ['confirmation' => $result]);
