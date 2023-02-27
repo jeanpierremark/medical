@@ -224,9 +224,7 @@
   </main><!-- End #main -->
 
    <!-- ======= Footer ======= -->
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
   <footer id="footer" class="footer" style="background-color:white">
     <div class="copyright" >
       &copy; Copyright 2022 <strong>SJD</strong>. Tous droits réservés
