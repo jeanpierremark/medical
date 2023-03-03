@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('accueil');
 //Route::get('/', [Notification::class, 'sendSMS'])->name('message')->name('accueil');
-Route::get('send', [Notification::class, 'sendSMS']);
+//Route::get('send', [Notification::class, 'sendSMS']);
 Route::get('sendmail', [SendMailController::class, 'EnvoieEmail']);
 
 Auth::routes();

@@ -35,11 +35,11 @@ class NotificationRvSMS extends Command
 
     {
         $client = new Client([
-            'base_uri' => "https://pw6g9l.api.infobip.com/",
-            'headers' => [
-                'Authorization' => "App f2c899914fd8acf12b24f163f5f70299-c46f75b2-59ca-4cb8-a517-8f6212b84954",
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
+            'base_uri' => "https://dm48r1.api.infobip.com/",
+                'headers' => [
+                    'Authorization' => "App 6c8eb7d2e2a60ed8fe87397fbf52b9b8-5360a5f0-0159-48dd-8c3c-0196fc2451a0",
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
             ]
         ]);
 

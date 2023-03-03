@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Console\Commands;
 
 use App\Mail\SendEmail;
 use App\Models\RendezVous;
@@ -9,11 +9,32 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Mail;
 
-class SendMailController extends Controller
-{
-    public function EnvoieEmail()
-    {
+use Illuminate\Console\Command;
 
+class NotificationEmail extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'rappel:email';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Rappel de rendez-vous par mail';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+        
         $rendezvous= RendezVous::with('patient')->wherestatut('non_effectif')->get();
      
        
@@ -36,5 +57,7 @@ class SendMailController extends Controller
 
        
     }
-}
+
+        return Command::SUCCESS;
+    }
 }

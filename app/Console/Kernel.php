@@ -20,7 +20,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('rappel:rdv')->dailyAt('14:50');
+         $schedule->command('rappel:rdv')->dailyAt('10:00');
+         $schedule->command('rappel:email')->dailyAt('10:02');
     }
 
     /**
