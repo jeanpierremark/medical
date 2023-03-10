@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Dompdf\Dompdf;
 use App\Models\User;
 use App\Models\Medecin;
 use App\Models\Patient;
@@ -17,6 +18,7 @@ use App\Models\Hospitalisation;
 use Illuminate\Support\Facades\DB;
 use App\Models\ExamenComplementaire;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View;
 
 class MedecinController extends Controller
 {
@@ -509,9 +511,24 @@ class MedecinController extends Controller
 
     public function generatepdf($id){
         $ordonnance=Ordonnance::find($id);
-        $medicament=Medicament::whereordonnance_id($id)->get();
-        $pdf= PDF::loadView('medecin.presor',compact('ordonnance','medicament'));
-        return $pdf->download('ordonnance.pdf');
+        $date=$ordonnance->dateOrdonnance;
+        $traitement=Traitement::find($ordonnance->traitement_id);
+        $patient=Patient::find($traitement->patient_id);
+        $mede=Medecin::find($traitement->medecin_id);
+        $medecin=User::find($mede->user_id);
+        $medicament=Medicament::whereordonnanceId($id)->get();
+        $data=[
+            'medicament' => $medicament,
+            'medecin' => $medecin,
+            'patient' => $patient,
+            'date' => $date
+        ];
+
+        $pdf= new Dompdf();
+        $pdf->loadHtml(View::make('medecin.presor',$data)->render());
+        $pdf->setPaper('A4','portrait');
+        $pdf->render();
+        return $pdf->stream('ordonnance.pdf');
     }
 }
 
