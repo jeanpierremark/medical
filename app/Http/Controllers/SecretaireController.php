@@ -54,7 +54,8 @@ class SecretaireController extends Controller
         $mede=array();
         $oriente= new Orienter();
         $rendezvous = new RendezVous();
-
+        $v= DB::table('rendez_vouses')->where('patient_id',$request->id)->max('id');
+        $rvv=RendezVous::find($v);
         $d=0;
         $pa=0;
         $por=Orienter::wherepatientId($request->id)->wheredomaine($request->domaine)->get();
@@ -77,17 +78,59 @@ class SecretaireController extends Controller
     else{ 
         if($d == $request->domaine && $pa==$request->id){
             $medecin=User::select('id')->whereemail($request->medecin)->get();
+            $sec=Secretaire::select('id')->whereuserId(Auth()->user()->id)->get();
+            foreach($sec as $se){ 
+                $send = $se->id; 
+            }
+           
+           
+            foreach($medecin as $med){ 
+                $rend = $med->id; }
+                
+            
+                $mede=Medecin::whereuserId($rend)->get();
+                foreach($mede as $me){ 
+                    $medd = $me->id;
+                    $specia=$me->specialite;
+                }
+
+            
+                if($rvv->statut=="non_effectif"){
+                    $id=$request->id;
+                    $var='Le patient a un rendez-vous non effectué';
+                    $medecin=User::with('medecin')->whererole('medecin')->get();
+                    $mede=Medecin::with('user')->get();
+                     return  view('secretaire.ajouterRv', compact('id','var','medecin','mede'));
+
+                }
+
+            else if(substr($request->date,0,4)<date('Y') || substr(substr( $request->date,0,7),5,7)<date('m')|| substr(substr( $request->date,0,7),5,7)>12 || substr(substr( $request->date,0,10),8,9)>31 || substr(substr( $request->date,0,10),8,9)<date('d')){
+                $id=$request->id;
+                $var='La date  est incorrete';
+                $medecin=User::with('medecin')->whererole('medecin')->get();
+                $mede=Medecin::with('user')->get();
+                 return  view('secretaire.ajouterRv', compact('id','var','medecin','mede'));
+            }
+            else if($specia != $request->domaine ){
+                $id=$request->id;
+                $var='Veuillez choisir un medecin du même service';
+                $medecin=User::with('medecin')->whererole('medecin')->get();
+                $mede=Medecin::with('user')->get();
+                 return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
+                
+                }
+
+            $medecin=User::select('id')->whereemail($request->medecin)->get();
            
             foreach($medecin as $m){ 
                 $rend = $m->id;
-               
             }
 
             $mede=Medecin::whereuserId($rend)->get();
             foreach($mede as $me){ 
                 $medd = $me->id;
-              
             }
+
             $rendezvous->medecin_id = $medd;
             $rendezvous->date = $request->date;
             $rendezvous->libelle = $request->libelle;
@@ -103,25 +146,32 @@ class SecretaireController extends Controller
             $send = $se->id; 
         }
        
-        $rendezvous->date = $request->date;
-        $rendezvous->libelle = $request->libelle;
-        $rendezvous->patient_id = $request->id;
+       
         foreach($medecin as $med){ 
             $rend = $med->id; }
             
-        if($rend!=0){
+        
             $mede=Medecin::whereuserId($rend)->get();
             foreach($mede as $me){ 
                 $medd = $me->id;
                 $specia=$me->specialite;
             }
+            
+            if($rvv->statut=="non_effectif"){
+                $id=$request->id;
+                $var='Le patient a un rendez-vous non effectué';
+                $medecin=User::with('medecin')->whererole('medecin')->get();
+                $mede=Medecin::with('user')->get();
+                 return  view('secretaire.ajouterRv', compact('id','var','medecin','mede'));
+
+            }
           
-                if(substr( $request->date,0,4)<date('Y') || substr(substr( $request->date,0,7),5,7)<date('m')|| substr(substr( $request->date,0,7),5,7)>12 || substr(substr( $request->date,0,10),8,9)>31 || substr(substr( $request->date,0,10),8,9)<date('d')){
+            else if(substr($request->date,0,4)<date('Y') || substr(substr( $request->date,0,7),5,7)<date('m')|| substr(substr( $request->date,0,7),5,7)>12 || substr(substr( $request->date,0,10),8,9)>31 || substr(substr( $request->date,0,10),8,9)<date('d')){
                 $id=$request->id;
                 $var='La date  est incorrete';
                 $medecin=User::with('medecin')->whererole('medecin')->get();
                 $mede=Medecin::with('user')->get();
-                 return  view('secretaire.ajouterRv' , compact('id','var','medecin','mede'));
+                 return  view('secretaire.ajouterRv', compact('id','var','medecin','mede'));
             }
         
             else if($specia != $request->domaine ){
@@ -133,22 +183,25 @@ class SecretaireController extends Controller
                 
                 } 
             else {
+                $rendezvous->date = $request->date;
+                $rendezvous->libelle = $request->libelle;
+                $rendezvous->patient_id = $request->id;
                 $rendezvous->medecin_id = $medd;
                 $result=$rendezvous->save();
                 $oriente->patient_id=$request->id;
                 $oriente->domaine= $request->domaine;
                 $oriente->secretaire_id= $send;
-               
                 $a=$oriente->save();
                
             }
-        }
+        
         
             return $this->listerendezVous();
         }
     }  
 
-    }
+}
+
 
 
     public function ajouter()

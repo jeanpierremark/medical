@@ -177,7 +177,7 @@
             <div class="col-3">
                 <div class="input-group" style="width:400px">
                     <div class="input-group-text bg-primary"><i class="fas fa-user text-light"></i></div>
-                    <input type="email" class=" form-control" name="niveauEtude"  placeholder="Email"  value=" <?php
+                    <input type="email" class=" form-control" name="email"  placeholder="Email"  value=" <?php
                     if(isset($_POST['email']))
                     echo $_POST['email']
                     ?>">
